@@ -9,12 +9,12 @@
 void Puzzle::fillSolveTemp(){
 	
 	this->solveTemp.clear();
-	this->solveTemp.resize(3);
-	for(int inc50 = 0; inc50 < 3; inc50++){
-		solveTemp[inc50].resize(3);
+	this->solveTemp.resize(this->sizePuz);
+	for(int inc50 = 0; inc50 < this->sizePuz; inc50++){
+		solveTemp[inc50].resize(this->sizePuz);
 	}
-	for(int i = 0; i < 3; i++){
-		for(int j = 0; j < 3; j++){
+	for(int i = 0; i < this->sizePuz; i++){
+		for(int j = 0; j < this->sizePuz; j++){
 			this->solveTemp[i][j] = this->startGridPuz[i][j];
 		}
 	}	
@@ -35,9 +35,9 @@ void Puzzle::checkSolve(){
 void Puzzle::Fresh(){
 	int number1; 
 	this->freshGrid.clear();
-	this->freshGrid.resize(3);
-	for(int inc51 = 0; inc51 < 3; inc51++){
-		freshGrid[inc51].resize(3);
+	this->freshGrid.resize(sizePuz);
+	for(int inc51 = 0; inc51 < sizePuz; inc51++){
+		freshGrid[inc51].resize(sizePuz);
 	}
 	for(int i = 0; i < this->sizePuz; i++){
 		for(int j = 0; j < this->sizePuz; j++){
@@ -61,19 +61,19 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 	int indexofFour;	
 	int targetIndex = 0;
 	std::vector<int>  correctspotsVector;
-	correctspotsVector.resize(9);
-
-	for(int i = 0; i < 9; i++){
-		if(i == 4 || i == 5){
-			i = 6;
+	correctspotsVector.resize((this->sizePuz * this->sizePuz));
+	int nonnum = (((this->sizePuz * this->sizePuz) - (2 * this->sizePuz)) + 1);
+	for(int i = 0; i < (this->sizePuz * this->sizePuz); i++){
+		if((i >= nonnum) && (i < ((this->sizePuz * this->sizePuz) - this->sizePuz))){
+			i = ((this->sizePuz * this->sizePuz) - this->sizePuz);
 		}
-		if(i == 3){
+		if(i == this->sizePuz){ //Probably going to need to change to SizePuz * number of rows completed
 			flagSlotting1 = 1;
 		}
 		else{
 			flagSlotting1 = 0;
 		}
-		if(i == 7){
+		if(i == ((this->sizePuz * this->sizePuz) - 2)){
 			flagSlotting2 = 1;
 			flagSlotting3 = 1;
 		}
@@ -82,25 +82,25 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 		}	
 		//This block changes the targets from the index they are to the index they need to be in for the algorithms to work
 		targetIndex = i;
-		if(targetIndex == 1){	//if target is index 1 it is now 2 for the algorithm
+		if((targetIndex % this->sizePuz) == (this->sizePuz - 2)){	//if target is index 1 it is now 2 for the algorithm
 			targetIndex = i + 1;
 		}
-		else if(targetIndex == 2){
-			targetIndex = targetIndex + 3;
+		else if((targetIndex % this->sizePuz) == (this->sizePuz - 1)){
+			targetIndex = targetIndex + this->sizePuz;
 		}
-		else if(targetIndex == 3){
-			targetIndex = targetIndex + 3;
+		else if(targetIndex == (nonnum - 1)){
+			targetIndex = targetIndex + this->sizePuz;
 		}
-		else if(targetIndex == 6){
+		else if(targetIndex == nonnum + this->sizePuz - 1){
 			targetIndex = targetIndex + 1;	
 		}
-		for(int inc100 = 0; inc100 < 3; inc100++){
-			for(int inc200 = 0; inc200 < 3; inc200++){
-				if(this->startGridPuz[inc100][inc200] == ((inc100*3)+inc200)+1){
-					correctspotsVector[((inc100*3)+inc200)] = (((inc100*3)+inc200)+1);
-					if((inc200 == 2) && (correctspotsVector[1] == -1) && (inc100 == 0)){
-						correctspotsVector[2] = -1;
-					}
+		for(int inc100 = 0; inc100 < this->sizePuz; inc100++){
+			for(int inc200 = 0; inc200 < this->sizePuz; inc200++){
+				if(this->startGridPuz[inc100][inc200] == ((inc100 * this->sizePuz) + inc200) + 1){
+					correctspotsVector[((inc100 * this->sizePuz)+inc200)] = (((inc100 * this->sizePuz)+inc200)+1);
+					if((inc200 == (this->sizePuz - 1)) && (correctspotsVector[((inc100 * this->sizePuz) + this->sizePuz - 2)] == -1)){// && (inc100 == 0)){
+						correctspotsVector[((inc100 * this->sizePuz) + this->sizePuz - 1)] = -1;
+					}//stopped here
 					if((inc100 == 2) && (inc200 == 0) && (correctspotsVector[3] == -1)){
 						correctspotsVector[6] = -1;
 					}

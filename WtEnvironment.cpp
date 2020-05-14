@@ -20,19 +20,56 @@
 #include <thread>
 #include "SlidePuzzle.h"
 #include "WtEnvironment.h"
+#include <Wt/WSlider.h>
 
 void tableApplication::clearAddTable(std::vector<std::vector<int> > startGridPuz2, int index0Tablei, int index0Tablej){ 
 	table->clear();
+	/*
+	switch(this->size) {
+		case 3:
+			this->styler2 = "td .three";
+      		break; 
+   		case 4:
+     			this->styler2 = "td .four";
+      		break; 
+		case 5:
+			this->styler2 = "td .five";
+      		break; 
+   		case 6:
+     			this->styler2 = "td .six";
+      		break; 
+		case 7:
+			this->styler2 = "td .seven";
+      		break; 
+   		case 8:
+     			this->styler2 = "td .eight";
+      		break; 
+		case 9:
+			this->styler2 = "td .nine";
+      		break; 
+   		case 10:
+     			this->styler2 = "td .ten";
+      		break; 
+
+
+   // you can have any number of case statements.
+   		default : 
+      			this->styler2 = "td";
+	}
+
+*/
+
+	//this->styler2 = "td." + std::to_string(this->size);
 	for(int i = 0; i < (this->size); i++){
 		for(int j = 0; j < (this->size); j++){
 			if(j == index0Tablej && i == index0Tablei){
 	    			table->elementAt((i), (j))->addNew<Wt::WText>(" ");	
-	    			table->elementAt((i),(j))->setStyleClass("tr");
+	    			table->elementAt((i),(j))->setStyleClass("td");
 			}
 			else{
 	        		this->elementnum = startGridPuz2[i][j];
 	    			this->table->elementAt((i), (j))->addNew<Wt::WText>(std::to_string(this->elementnum));
-	    			this->table->elementAt((i),(j))->setStyleClass("tr");
+	    			this->table->elementAt((i),(j))->setStyleClass("td");
 			}
 		}
         }
@@ -50,22 +87,25 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 	table = w2->addWidget(std::make_unique<Wt::WTable>());
 	table->setHeaderCount(0);
 	table->setWidth(Wt::WLength("50%"));
+	table->setHeight(Wt::WLength("700px"));
 	//Create Contents of table
 	for(int i = 0; i < size; i++){
 		for(int j = 0; j < size; j++){
 			if(j == 0 && i == 0){
 	    			table->elementAt((i), (j))->addNew<Wt::WText>(" ");	
-	    			table->elementAt((i),(j))->setStyleClass("tr");
+	    			table->elementAt((i),(j))->setStyleClass("td");
 			}
 			else{
 				elementnum = (i*size)+ j;
 	    			table->elementAt((i), (j))->addNew<Wt::WText>(std::to_string(elementnum));
-	    			table->elementAt((i),(j))->setStyleClass("tr");
+	    			table->elementAt((i),(j))->setStyleClass("td");
 			}
 		}
 	}
 	//Set Table Styles	
-	table->setStyleClass("number-item");
+	this->styler = "number-item" + std::to_string(this->size);	
+	//this->styler2 = "td." + std::to_string(this->size);
+	table->setStyleClass(styler);
 	table->addStyleClass("table-bordered");
         //Create 4 Buttons to move pieces
 	Wt::WPushButton *button = w2->addWidget(std::make_unique<Wt::WPushButton>("Right!"));    
@@ -80,6 +120,18 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
         button5->setStyleClass("button5");      
 	Wt::WPushButton *button6 = w2->addWidget(std::make_unique<Wt::WPushButton>("Algoithm Visualizer!\n(Solve with AI)"));
 	button6->setStyleClass("button6");
+	Wt::WSlider *slider = w2->addNew<Wt::WSlider>();
+	slider->resize(250, 25);
+	slider->setNativeControl(true);	
+	slider->setRange(0, 500);	
+	slider->setValue(100);
+	slider->setStyleClass("slider");
+	Wt::WSlider *slider2 = w2->addNew<Wt::WSlider>();
+	slider2->resize(250, 25);
+	slider2->setNativeControl(true);	
+	slider2->setRange(3, 10);	
+	slider2->setValue(3);
+	slider2->setStyleClass("slider2");
 	//Create a Puzzle object to work as the model for the table to get its changed data from
 	Puzzle *puzzle = new Puzzle();
 	this->startGrid = puzzle->startGridPuz;
@@ -87,15 +139,42 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 	SolidMovesText_->setStyleClass("SolidMoves");
         MovesText_ = w2-> addWidget(std::make_unique<Wt::WText>(std::to_string(puzzle->numMoves)));
  	MovesText_->setStyleClass("Moves");
+	
+        TitleText = w2-> addWidget(std::make_unique<Wt::WText>("Power\nPuzzle!"));
+	TitleText->setWordWrap(true);	
+	TitleText->setStyleClass("TitleText");
+        speedSolveText = w2-> addWidget(std::make_unique<Wt::WText>("Speed Of Solver"));
+ 	speedSolveText->setStyleClass("speedSolveText");
+        sizeGridText = w2-> addWidget(std::make_unique<Wt::WText>("Size of Puzzle"));
+ 	sizeGridText->setStyleClass("sizeGridText");
 	Solved = w2->addWidget(std::make_unique<Wt::WText>("SOLVED!!"));
 	Solved->setStyleClass("Solved");
 	Solved->hide();
-	if(puzzle->counter == 9){
+	if(puzzle->counter == (size * size)){
 		Solved->show();
 	}
 	else{
 		Solved->hide();
 	}
+
+	slider->valueChanged().connect([=] {
+		this->speedSolve = slider->value();
+	});
+	auto SwapSizer = [=]{
+		this->size = slider2->value();
+		puzzle->sizePuz = this->size;	
+		Solved->hide();
+		puzzle->Fresh();
+		puzzle->startGridPuz.resize(this->size);
+		for(int increment1 = 0; increment1 < this->size; increment1++){
+			puzzle->startGridPuz[increment1].resize(this->size);
+		}
+		puzzle->startGridPuz = puzzle->freshGrid;	
+		this->styler = "number-item" + std::to_string(this->size);
+		table->setStyleClass(this->styler);
+		this->clearAddTable(puzzle->startGridPuz, 0, 0);
+	};
+	slider2->valueChanged().connect(std::bind(SwapSizer));
 	//function called when button for visualizer is clicked
 	auto SwapSolver = [=]{
 		puzzle->fillSolveTemp();
@@ -113,7 +192,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 					puzzle->solveINDEXj = puzzle->solveINDEXj -1;
 					puzzle->flag = 1;
 					if(puzzle->flag == 1){
-						sleep_for(milliseconds(100));
+						sleep_for(milliseconds(this->speedSolve));
 						this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi,puzzle->solveINDEXj);
 						this->processEvents();
 						puzzle->flag = 0;
@@ -127,7 +206,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 					puzzle->solveINDEXi = puzzle->solveINDEXi - 1;
 					puzzle->flag = 1;
 					if(puzzle->flag == 1){
-						sleep_for(milliseconds(100));
+						sleep_for(milliseconds(this->speedSolve));
 						this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi, puzzle->solveINDEXj);
 						this->processEvents();	
 						puzzle->flag = 0;
@@ -141,7 +220,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 					puzzle->solveINDEXj = puzzle->solveINDEXj + 1;
 					puzzle->flag = 1;
 					if(puzzle->flag == 1){
-						sleep_for(milliseconds(100));
+						sleep_for(milliseconds(this->speedSolve));
 						this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi, puzzle->solveINDEXj);
 						this->processEvents();
 						puzzle->flag = 0;
@@ -155,7 +234,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 					puzzle->solveINDEXi = puzzle->solveINDEXi + 1;
 					puzzle->flag = 1;
 					if(puzzle->flag == 1){
-						sleep_for(milliseconds(100));
+						sleep_for(milliseconds(this->speedSolve));
 						this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi, puzzle->solveINDEXj);
 						this->processEvents();
 						puzzle->flag = 0;
@@ -164,7 +243,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 			}
 		}	
 		puzzle->checkSolve();
-		if(puzzle->counter == 9){
+		if(puzzle->counter == (size * size)){
 			Solved->show();
 		}
 		else{
@@ -258,7 +337,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 		if(puzzle->flag == 1){
 			this->clearAddTable(puzzle->startGridPuz, puzzle->indexAti, puzzle->indexAtj);
 			puzzle->checkSolve();
-			if(puzzle->counter == 9){
+			if(puzzle->counter == (size * size)){
 				Solved->show();
 			}
 			else{
@@ -279,7 +358,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 		if(puzzle->flag == 1){
 			this->clearAddTable(puzzle->startGridPuz, puzzle->indexAti, puzzle->indexAtj);
 			puzzle->checkSolve();
-			if(puzzle->counter == 9){
+			if(puzzle->counter == (size * size)){
 				Solved->show();
 			}
 			else{
@@ -300,7 +379,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 		if(puzzle->flag == 1){
 			this->clearAddTable(puzzle->startGridPuz, puzzle->indexAti, puzzle->indexAtj);
 			puzzle->checkSolve();
-			if(puzzle->counter == 9){
+			if(puzzle->counter == (size * size)){
 				Solved->show();
 			}
 			else{
@@ -321,7 +400,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 		if(puzzle->flag == 1){
 			this->clearAddTable(puzzle->startGridPuz, puzzle->indexAti, puzzle->indexAtj);
 			puzzle->checkSolve();
-			if(puzzle->counter == 9){
+			if(puzzle->counter == (size * size)){
 				Solved->show();
 			}
 			else{
