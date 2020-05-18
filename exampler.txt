@@ -1,0 +1,8 @@
+index of j when i = 0: 4
+left happens: 
+index of j when i = 0: 4
+left happens: 
+index of j when i = 0: 4
+left happens: 
+index of j when i = 0: 4
+left happens: 

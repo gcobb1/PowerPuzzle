@@ -4,6 +4,7 @@
 #include <vector>
 #include <cstdlib>
 #include <Wt/WObject.h>
+#include <fstream>
 //Puzzle object that is the underlying computational model of the display puzzle
 class Puzzle : public Wt::WObject
 {
@@ -22,6 +23,8 @@ public:
 	int numMoves = 0;	
 	int index1D;	//index of 0 in 1D
 	int indexAti;	//index of 0 in i, and j is below
+	int topRowComplete = 0;	
+	int SideColumnComplete = 0;
 	int indexAtj;
 	int indexNumi;
 	int indexNumj;
@@ -47,6 +50,7 @@ public:
 		delete this;
 	}
 	std::vector<std::vector<int> > NEWGRID = {{1, 2, 3}, {4, 5, 6}, {7, 8, 0}};
+	void NGFresh();
 	void Fresh();	
 	//Solves Puzzle From mixed state (below)
 	std::vector<std::vector<int> > slide_puzzle();

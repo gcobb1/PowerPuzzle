@@ -150,7 +150,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 	Solved = w2->addWidget(std::make_unique<Wt::WText>("SOLVED!!"));
 	Solved->setStyleClass("Solved");
 	Solved->hide();
-	if(puzzle->counter == (size * size)){
+	if(puzzle->counter == (this->size * this->size)){
 		Solved->show();
 	}
 	else{
@@ -165,11 +165,12 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 		puzzle->sizePuz = this->size;	
 		Solved->hide();
 		puzzle->Fresh();
+		puzzle->NGFresh();
 		puzzle->startGridPuz.resize(this->size);
 		for(int increment1 = 0; increment1 < this->size; increment1++){
 			puzzle->startGridPuz[increment1].resize(this->size);
 		}
-		puzzle->startGridPuz = puzzle->freshGrid;	
+		puzzle->startGridPuz = puzzle->freshGrid;
 		this->styler = "number-item" + std::to_string(this->size);
 		table->setStyleClass(this->styler);
 		this->clearAddTable(puzzle->startGridPuz, 0, 0);
@@ -214,7 +215,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 				}
 			}
 			else if(puzzle->SwapsForSolveINDEX1D[inc10] == 1){
-				if(puzzle->solveINDEXj != 2){
+				if(puzzle->solveINDEXj != (this->size - 1)){
 					puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj] = puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj+1];
 					puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj+1] = 0;
 					puzzle->solveINDEXj = puzzle->solveINDEXj + 1;
@@ -228,7 +229,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 				}
 			}
 			else if(puzzle->SwapsForSolveINDEX1D[inc10] == 3){
-				if(puzzle->solveINDEXi != 2){
+				if(puzzle->solveINDEXi != (this->size - 1)){
 					puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj] = puzzle->solveTemp[puzzle->solveINDEXi + 1][puzzle->solveINDEXj];
 					puzzle->solveTemp[puzzle->solveINDEXi + 1][puzzle->solveINDEXj] = 0;
 					puzzle->solveINDEXi = puzzle->solveINDEXi + 1;
@@ -243,7 +244,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 			}
 		}	
 		puzzle->checkSolve();
-		if(puzzle->counter == (size * size)){
+		if(puzzle->counter == (this->size * this->size)){
 			Solved->show();
 		}
 		else{
@@ -267,7 +268,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 					puzzle->mixINDEXj = puzzle->mixINDEXj -1;
 					puzzle->flag = 1;
 					if(puzzle->flag == 1){
-						    sleep_for(milliseconds(25));
+						    sleep_for(milliseconds(10 / (this->size - 2)));
 						this->clearAddTable(puzzle->freshGrid, puzzle->mixINDEXi, puzzle->mixINDEXj);
 						this->processEvents();
 						puzzle->flag = 0;
@@ -278,11 +279,11 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 				if(puzzle->mixINDEXi != 0){
 					puzzle->freshGrid[puzzle->mixINDEXi][puzzle->mixINDEXj] = puzzle->freshGrid[puzzle->mixINDEXi-1][puzzle->mixINDEXj];
 					puzzle->freshGrid[puzzle->mixINDEXi-1][puzzle->mixINDEXj] = 0;
-					puzzle->locationof0MIX = puzzle->locationof0MIX - 3;
+					puzzle->locationof0MIX = puzzle->locationof0MIX - this->size;
 					puzzle->mixINDEXi = puzzle->mixINDEXi -1;
 					puzzle->flag = 1;
 					if(puzzle->flag == 1){
-					        sleep_for(milliseconds(25));
+					        sleep_for(milliseconds(10 / (this->size - 2)));
 						this->clearAddTable(puzzle->freshGrid, puzzle->mixINDEXi, puzzle->mixINDEXj);
 						this->processEvents();
 						puzzle->flag = 0;
@@ -290,14 +291,14 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 				}
 			}
 			else if(puzzle->SwapsForMixUpINDEX1D[k] == 2){
-				if(puzzle->mixINDEXj != 2){
+				if(puzzle->mixINDEXj != this->size - 1){
 					puzzle->freshGrid[puzzle->mixINDEXi][puzzle->mixINDEXj] = puzzle->freshGrid[puzzle->mixINDEXi][puzzle->mixINDEXj+1];
 					puzzle->freshGrid[puzzle->mixINDEXi][puzzle->mixINDEXj+1] = 0;
 					puzzle->locationof0MIX = puzzle->locationof0MIX + 1;
 					puzzle->mixINDEXj = puzzle->mixINDEXj +1;
 					puzzle->flag = 1;
 					if(puzzle->flag == 1){
-    						sleep_for(milliseconds(25));
+    						sleep_for(milliseconds(10 / (this->size - 2)));
 						this->clearAddTable(puzzle->freshGrid, puzzle->mixINDEXi, puzzle->mixINDEXj);
 						this->processEvents();
 						puzzle->flag = 0;
@@ -305,14 +306,14 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 				}
 			}
 			else if(puzzle->SwapsForMixUpINDEX1D[k] == 3){
-				if(puzzle->mixINDEXi != 2){
+				if(puzzle->mixINDEXi != (this->size - 1)){
 					puzzle->freshGrid[puzzle->mixINDEXi][puzzle->mixINDEXj] = puzzle->freshGrid[puzzle->mixINDEXi+1][puzzle->mixINDEXj];
 					puzzle->freshGrid[puzzle->mixINDEXi+1][puzzle->mixINDEXj] = 0;
-					puzzle->locationof0MIX = puzzle->locationof0MIX + 3;
+					puzzle->locationof0MIX = puzzle->locationof0MIX + this->size;
 					puzzle->mixINDEXi = puzzle->mixINDEXi +1;
 					puzzle->flag = 1;
 					if(puzzle->flag == 1){
-    						sleep_for(milliseconds(25));
+    						sleep_for(milliseconds(10 / (this->size - 2)));
 						this->clearAddTable(puzzle->freshGrid, puzzle->mixINDEXi, puzzle->mixINDEXj);
 						this->processEvents();
 					puzzle->flag = 0;
@@ -337,7 +338,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 		if(puzzle->flag == 1){
 			this->clearAddTable(puzzle->startGridPuz, puzzle->indexAti, puzzle->indexAtj);
 			puzzle->checkSolve();
-			if(puzzle->counter == (size * size)){
+			if(puzzle->counter == (this->size * this->size)){
 				Solved->show();
 			}
 			else{
@@ -358,7 +359,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 		if(puzzle->flag == 1){
 			this->clearAddTable(puzzle->startGridPuz, puzzle->indexAti, puzzle->indexAtj);
 			puzzle->checkSolve();
-			if(puzzle->counter == (size * size)){
+			if(puzzle->counter == (this->size * this->size)){
 				Solved->show();
 			}
 			else{
@@ -379,7 +380,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 		if(puzzle->flag == 1){
 			this->clearAddTable(puzzle->startGridPuz, puzzle->indexAti, puzzle->indexAtj);
 			puzzle->checkSolve();
-			if(puzzle->counter == (size * size)){
+			if(puzzle->counter == (this->size * this->size)){
 				Solved->show();
 			}
 			else{
@@ -400,7 +401,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 		if(puzzle->flag == 1){
 			this->clearAddTable(puzzle->startGridPuz, puzzle->indexAti, puzzle->indexAtj);
 			puzzle->checkSolve();
-			if(puzzle->counter == (size * size)){
+			if(puzzle->counter == (this->size * this->size)){
 				Solved->show();
 			}
 			else{
