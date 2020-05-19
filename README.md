@@ -1,6 +1,8 @@
 PowerPuzzle!
 Author: Gavin Cobb
 Date: April 2020
+https://github.com/gcobb1/PowerPuzzle
+This Code is Licensed under GNU-LGPL-3.0
 
 Concept:
 A Puzzling Algorithm Visualizer! 
