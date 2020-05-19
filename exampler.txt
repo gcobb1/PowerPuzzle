@@ -1,8 +1,2 @@
-index of j when i = 0: 4
-left happens: 
-index of j when i = 0: 4
-left happens: 
-index of j when i = 0: 4
-left happens: 
-index of j when i = 0: 4
+index of j when i = 0: 1
 left happens: 

@@ -124,7 +124,7 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 		else if(targetIndex == (nonnum - 1)){
 			targetIndex = targetIndex + this->sizePuz;
 		}
-		else if(targetIndex == nonnum + this->sizePuz - 1){
+		else if(targetIndex == ((nonnum + this->sizePuz) - 1)){
 			targetIndex = targetIndex + 1;	
 		}
 		for(int inc100 = 0; inc100 < this->sizePuz; inc100++){
@@ -248,6 +248,12 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 			this->index1D = findIndex0(0);	//find indexes of 0 in 1d and 2d
 			this->indexAti	= iIndex0(this->index1D);
 			this->indexAtj = jIndex0(this->index1D);
+//			this->index1D = findIndex0(0);	//find indexes of 0 in 1d and 2d
+//			this->indexAti	= iIndex0(this->index1D);
+//			this->indexAtj = jIndex0(this->index1D);
+			tempi = this->indexAti;
+			tempj = this->indexAtj;
+	
 			if((i == (this->sizePuz - 1)) && (i >= this->indexAtj)){
 				for(int inc5 = 0; inc5 < ((1 + this->topRowComplete) - this->indexAti); inc5++){
 					this->startGridPuz = this->swapDown();
@@ -334,11 +340,11 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 			//This if block represents if we are looking for a 1 to swap up
 			else if(i == 0){
 					
-				this->index1D = findIndex0(0);	//find indexes of 0 in 1d and 2d
-				this->indexAti	= iIndex0(this->index1D);
-				this->indexAtj = jIndex0(this->index1D);
-				tempi = this->indexAti;
-				tempj = this->indexAtj;
+			//	this->index1D = findIndex0(0);	//find indexes of 0 in 1d and 2d
+			//	this->indexAti	= iIndex0(this->index1D);
+			//	this->indexAtj = jIndex0(this->index1D);
+			//	tempi = this->indexAti;
+			//	tempj = this->indexAtj;
 				for(int inc3 = 0; inc3 < tempj; ++inc3){
 					ofile << "index of j when i = 0: ";
 					ofile << tempj;
@@ -362,15 +368,15 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 					}
 				}
 			}//added temps
-			else if(i == (this->sizePuz - 2)){// && (i >= this->indexAtj)){
-				for(int inc9 = 0; inc9 < (targetIndex - this->indexAtj); inc9++){
+			else if((i < (this->sizePuz - 1)) && (i != 0) && (i >= tempj)){// && (i >= this->indexAtj)){
+				for(int inc9 = 0; inc9 < (targetIndex - tempj); inc9++){
 					this->startGridPuz = this->swapRight();
 					if(this->flag == 1){
 						this->SwapsForSolveINDEX1D.push_back(1);
 						this->flag = 0;
 					}
 				}
-				for(int inc11 = 0; inc11 < this->indexAti; inc11++){
+				for(int inc11 = 0; inc11 < tempi; inc11++){
 					this->startGridPuz = this->swapUp();
 					if(this->flag == 1){
 						this->SwapsForSolveINDEX1D.push_back(2);
@@ -378,6 +384,25 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 					}
 				}
 			}//
+			else if((i < (this->sizePuz - 1)) && (i != 0) && (i < tempj)){// && (i >= this->indexAtj)){
+				for(int inc9 = 0; inc9 < (tempj - targetIndex); inc9++){
+					ofile << "tempj = " << tempj << "\n";
+					ofile << "targetIndex = " << targetIndex << "\n";
+					this->startGridPuz = this->swapLeft();
+					if(this->flag == 1){
+						this->SwapsForSolveINDEX1D.push_back(0);
+						this->flag = 0;
+					}
+				}
+				for(int inc11 = 0; inc11 < tempi; inc11++){
+					this->startGridPuz = this->swapUp();
+					if(this->flag == 1){
+						this->SwapsForSolveINDEX1D.push_back(2);
+						this->flag = 0;
+					}
+				}
+			}//
+
 			else if(i == (nonnum - 1)){
 				indexofFour = this->findIndex0(nonnum);
 				indexofSev = this->findIndex0(nonnum + this->sizePuz);
@@ -590,7 +615,7 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 				this->startGridPuz = this->wrapAround(i, targetIndex, this->index1D, indexNumtoSwap);
 			
 			}
-			else if(i == 1){
+			else if((i < (this->sizePuz - 1)) && (i != 0)){
 				this->startGridPuz = this->wrapAround(i, targetIndex, this->index1D, indexNumtoSwap);
 			}
 			else if(i == (this->sizePuz - 1)){
@@ -990,7 +1015,7 @@ std::vector<std::vector<int> > Puzzle::wrapAround(int increment, int targetIndex
 			this->indexNumi = this->iIndex0(index1DNUM);
 			this->indexNumj = this->jIndex0(index1DNUM);
 		}
-		else if((ir == 1) && (this->indexAtj != this->indexNumj - 1) && (this->indexAtj != this->indexNumj + 1)){
+		else if((ir == (this->sizePuz - 2)) && (this->indexAtj != this->indexNumj - 1) && (this->indexAtj != this->indexNumj + 1)){
 			this->startGridPuz = swapLeft();
 			if(this->flag == 1){
 				this->SwapsForSolveINDEX1D.push_back(0);
@@ -1023,8 +1048,8 @@ std::vector<std::vector<int> > Puzzle::wrapAround(int increment, int targetIndex
 			this->indexNumi = this->iIndex0(index1DNUM);
 			this->indexNumj = this->jIndex0(index1DNUM);
 		}
-		else if((ir == 1) && (this->indexAtj == this->indexNumj - 1) && (this->indexAti == 1)){
-			if(this->indexNumj == 1){
+		else if((ir == (this->sizePuz - 2)) && (this->indexAtj == this->indexNumj - 1) && (this->indexAti < (this->sizePuz - 1))){
+			if(this->indexNumj < (this->sizePuz - 1)){
 				this->startGridPuz = swapDown();
 				if(this->flag == 1){
 					this->SwapsForSolveINDEX1D.push_back(3);
@@ -1067,8 +1092,8 @@ std::vector<std::vector<int> > Puzzle::wrapAround(int increment, int targetIndex
 				this->flag = 0;
 			}
 		}
-		else if((ir == 1) && (this->indexAtj == this->indexNumj - 1) && (this->indexAti == 2)){
-			if(this->indexNumj == 1){
+		else if((ir == (this->sizePuz - 2)) && (this->indexAtj == this->indexNumj - 1) && (this->indexAti == (this->sizePuz - 1))){
+			if(this->indexNumj < (this->sizePuz - 1)){
 				this->startGridPuz = swapUp();
 				if(this->flag == 1){
 					this->SwapsForSolveINDEX1D.push_back(2);
@@ -1135,7 +1160,7 @@ std::vector<std::vector<int> > Puzzle::wrapAround(int increment, int targetIndex
 				this->SwapsForSolveINDEX1D.push_back(3);
 				this->flag = 0;
 			}
-		}
+		}//stopped
 		else if((ir == 2) && (this->indexAtj == this->indexNumj - 1) && (this->indexAti == 2)){
 			if(this->indexNumj == 1){
 				this->startGridPuz = swapUp();
@@ -1208,8 +1233,8 @@ std::vector<std::vector<int> > Puzzle::wrapAround(int increment, int targetIndex
 				this->flag = 0;
 			}
 		}
-		else if(ir == 3){
-			if(this->indexAti == 1){	
+		else if(ir == (nonnum - 1)){
+			if(this->indexAti == (this->sizePuz - 2)){	
 				this->startGridPuz = swapLeft();
 				if(this->flag == 1){
 					this->SwapsForSolveINDEX1D.push_back(0);
@@ -1232,7 +1257,7 @@ std::vector<std::vector<int> > Puzzle::wrapAround(int increment, int targetIndex
 			this->indexAtj = this->jIndex0(INDEX1D0);
 			this->indexNumi = this->iIndex0(index1DNUM);
 			this->indexNumj = this->jIndex0(index1DNUM);
-				if(this->indexAtj == 2){
+				if(this->indexAtj == (this->sizePuz - 1)){
 				this->startGridPuz = swapUp();
 				if(this->flag == 1){
 					this->SwapsForSolveINDEX1D.push_back(2);
@@ -1260,8 +1285,8 @@ std::vector<std::vector<int> > Puzzle::wrapAround(int increment, int targetIndex
 				}
 
 			}
-		}
-		else if(ir == 6){
+		}//finsihed
+		else if(ir == 6){//if this inovlves nonnum2 then must create another for all bottom row 
 			this->startGridPuz = swapLeft();
 			if(this->flag == 1){
 				this->SwapsForSolveINDEX1D.push_back(0);
