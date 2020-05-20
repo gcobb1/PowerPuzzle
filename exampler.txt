@@ -1,2 +1,30 @@
-index of j when i = 0: 1
+index of j when i = 0: 3
 left happens: 
+index of j when i = 0: 3
+left happens: 
+index of j when i = 0: 3
+left happens: 
+i = 6 made it to the spot
+index of j when i = 0: 5
+left happens: 
+index of j when i = 0: 5
+left happens: 
+index of j when i = 0: 5
+left happens: 
+index of j when i = 0: 5
+left happens: 
+index of j when i = 0: 5
+left happens: 
+i = 12 made it to the spot
+index of j when i = 0: 5
+left happens: 
+index of j when i = 0: 5
+left happens: 
+index of j when i = 0: 5
+left happens: 
+index of j when i = 0: 5
+left happens: 
+index of j when i = 0: 5
+left happens: 
+i = 18 made it to the spot
+i = 24 made it to the spot
