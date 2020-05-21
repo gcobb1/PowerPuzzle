@@ -1,30 +1,10 @@
-index of j when i = 0: 3
-left happens: 
-index of j when i = 0: 3
-left happens: 
-index of j when i = 0: 3
-left happens: 
-i = 6 made it to the spot
-index of j when i = 0: 5
-left happens: 
-index of j when i = 0: 5
-left happens: 
-index of j when i = 0: 5
-left happens: 
-index of j when i = 0: 5
-left happens: 
-index of j when i = 0: 5
-left happens: 
-i = 12 made it to the spot
-index of j when i = 0: 5
-left happens: 
-index of j when i = 0: 5
-left happens: 
-index of j when i = 0: 5
-left happens: 
-index of j when i = 0: 5
-left happens: 
-index of j when i = 0: 5
-left happens: 
-i = 18 made it to the spot
-i = 24 made it to the spot
+Swapping Left for last row i = 3 sides  completed = 0this->sizePuz - 1 - this->sideColComplete = ?
+swappingleft
+swappingleft
+Swapping Left for last row i = 15 sides  completed = 0this->sizePuz - 1 - this->sideColComplete = ?
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+Swapping Left for last row i = 16 sides  completed = 1this->sizePuz - 1 - this->sideColComplete = ?
+Swapping Left for last row i = 17 sides  completed = 2this->sizePuz - 1 - this->sideColComplete = ?

@@ -24,7 +24,7 @@ public:
 	int index1D;	//index of 0 in 1D
 	int indexAti;	//index of 0 in i, and j is below
 	int topRowComplete = 0;	
-	int SideColumnComplete = 0;
+	int sideColComplete = 0;
 	int indexAtj;
 	int indexNumi;
 	int indexNumj;
