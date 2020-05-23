@@ -403,8 +403,8 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 			this->indexAtj = jIndex0(this->index1D);
 			tempi = this->indexAti;
 			tempj = this->indexAtj;
-			indexofTwo = this->findIndex0((this->sizePuz - 1));
-			indexofThr = this->findIndex0(this->sizePuz);
+			indexofTwo = this->findIndex0((this->sizePuz - 1) + (this->sizePuz * this->topRowComplete));
+			indexofThr = this->findIndex0((this->sizePuz + (this->sizePuz * this->topRowComplete)));
 			if(((i % this->sizePuz) == (this->sizePuz - 2)) && (i < (nonnum - 1)) && (tempi == (0 + this->topRowComplete))){
 				if((indexofTwo == ((this->topRowComplete * this->sizePuz) + (this->sizePuz - 2))) && ((indexofThr == ((this->sizePuz - 1) + ((this->topRowComplete + 1) * this->sizePuz))))){
 					this->startGridPuz = this->swapDown();
@@ -438,7 +438,7 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 						this->flag = 0;
 					}
 				}// FIXED 1.8//probably should add 1 + this
-				indexofThr = this->findIndex0(this->sizePuz);//
+				indexofThr = this->findIndex0((this->sizePuz + (this->sizePuz * this->topRowComplete)));//
 				if(indexofThr == ((this->topRowComplete * this->sizePuz) + (this->sizePuz - 2))){		
 					ofile << "EDGE CASE FOR 3,2 is CALLED";
 					this->startGridPuz = this->swapLeft();			
@@ -578,7 +578,14 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 						tempj = this->indexAtj;
 						//ofile << "Swapping Left for last row i = " << i << " sides  completed = " << this->sideColComplete << "this->sizePuz - 1 - this->sideColComplete = ?\n";
 						for(int inc12 = 0; inc12 < (tempj - this->sideColComplete); inc12++){
-							//ofile << "swappingleft\n";
+							ofile << "swappingleft\n";
+							if(tempi == (this->sizePuz - 1)){
+								this->startGridPuz = this->swapUp();
+								if(this->flag == 1){
+									this->SwapsForSolveINDEX1D.push_back(2);
+									this->flag = 0;
+								}
+							}
 							this->startGridPuz = this->swapLeft();
 							if(this->flag == 1){
 								this->SwapsForSolveINDEX1D.push_back(0);
@@ -603,6 +610,33 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 					//ofile << "Swapping Left for last row i = " << i << " sides  completed = " << this->sideColComplete << "this->sizePuz - 1 - this->sideColComplete = ?\n";
 					for(int inc17 = 0; inc17 < (tempj - this->sideColComplete); inc17++){
 						//ofile << "swappingleft\n";
+						this->startGridPuz = this->swapLeft();
+						if(this->flag == 1){
+							this->SwapsForSolveINDEX1D.push_back(0);
+							this->flag = 0;
+						}
+					}
+					this->index1D = findIndex0(0);	//find indexes of 0 in 1d and 2d
+					this->indexAti	= iIndex0(this->index1D);
+					this->indexAtj = jIndex0(this->index1D);
+					tempi = this->indexAti;
+					tempj = this->indexAtj;
+					if((tempj == ((((nonnum + this->sideColComplete) + this->sizePuz) - 1) % this->sizePuz)) && (tempi == (this->sizePuz - 1))){
+						this->startGridPuz = this->swapUp();
+						if(this->flag == 1){
+							this->SwapsForSolveINDEX1D.push_back(2);
+							this->flag = 0;
+						}
+						this->startGridPuz = this->swapRight();
+						if(this->flag == 1){
+							this->SwapsForSolveINDEX1D.push_back(1);
+							this->flag = 0;
+						}
+						this->startGridPuz = this->swapDown();
+						if(this->flag == 1){
+							this->SwapsForSolveINDEX1D.push_back(3);
+							this->flag = 0;
+						}
 						this->startGridPuz = this->swapLeft();
 						if(this->flag == 1){
 							this->SwapsForSolveINDEX1D.push_back(0);
@@ -699,6 +733,56 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 					}
 					continue;
 				}
+				else if((indexofSev == ((nonnum + this->sideColComplete) - 1)) && (indexofFour == ((nonnum + this->sideColComplete) + this->sizePuz))){
+					this->index1D = findIndex0(0);	//find indexes of 0 in 1d and 2d
+					this->indexAti	= iIndex0(this->index1D);
+					this->indexAtj = jIndex0(this->index1D);
+					tempi = this->indexAti;
+					tempj = this->indexAtj;
+					if((tempj == ((((nonnum + this->sideColComplete) - 1) + this->sizePuz) % this->sizePuz)) && (tempi == (this->sizePuz - 1))){
+
+						this->startGridPuz = this->swapUp();
+						if(this->flag == 1){
+							this->SwapsForSolveINDEX1D.push_back(2);
+							this->flag = 0;
+						}
+						this->startGridPuz = this->swapRight();
+						if(this->flag == 1){
+							this->SwapsForSolveINDEX1D.push_back(1);
+							this->flag = 0;
+						}
+						this->startGridPuz = this->swapRight();
+						if(this->flag == 1){
+							this->SwapsForSolveINDEX1D.push_back(1);
+							this->flag = 0;
+						}
+						this->startGridPuz = this->swapDown();
+						if(this->flag == 1){
+							this->SwapsForSolveINDEX1D.push_back(3);
+							this->flag = 0;
+						}
+						this->startGridPuz = this->swapLeft();
+						if(this->flag == 1){
+							this->SwapsForSolveINDEX1D.push_back(0);
+							this->flag = 0;
+						}
+						this->startGridPuz = this->swapUp();
+						if(this->flag == 1){
+							this->SwapsForSolveINDEX1D.push_back(2);
+							this->flag = 0;
+						}
+						this->startGridPuz = this->swapLeft();
+						if(this->flag == 1){
+							this->SwapsForSolveINDEX1D.push_back(0);
+							this->flag = 0;
+						}
+						this->startGridPuz = this->swapDown();
+						if(this->flag == 1){
+							this->SwapsForSolveINDEX1D.push_back(3);
+							this->flag = 0;
+						}
+					}
+				}
 			}
 			else if((i == (((nonnum + this->sideColComplete) + this->sizePuz) - 1)) && (i < (nonnum2 + this->sizePuz))){
 				this->index1D = findIndex0(0);	//find indexes of 0 in 1d and 2d
@@ -759,8 +843,8 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 //			this->indexAtj = jIndex0(this->index1D);
 			tempi = this->indexAti;
 			tempj = this->indexAtj;
-			indexofTwo = this->findIndex0((this->sizePuz - 1));
-			indexofThr = this->findIndex0(this->sizePuz);
+			indexofTwo = this->findIndex0((this->sizePuz - 1) + (this->sizePuz * this->topRowComplete));
+			indexofThr = this->findIndex0((this->sizePuz + (this->sizePuz * this->topRowComplete)));
 			if(((i % this->sizePuz) == (this->sizePuz - 2)) && (i < nonnum - 1) && (tempi == (0 + this->topRowComplete))){
 				if((indexofTwo == ((this->topRowComplete * this->sizePuz) + (this->sizePuz - 2))) && ((indexofThr == ((this->sizePuz - 1) + ((this->topRowComplete + 1) * this->sizePuz))))){
 					this->startGridPuz = this->swapDown();
@@ -1837,6 +1921,10 @@ std::vector<std::vector<int> > Puzzle::wrapAround(int increment, int targetIndex
 			this->indexAtj = this->jIndex0(INDEX1D0);
 			this->indexNumi = this->iIndex0(index1DNUM);
 			this->indexNumj = this->jIndex0(index1DNUM);
+			if(this->startGridPuz[targetIndexi][targetIndexj] == targetNum){
+				break;
+			}
+
 				if(this->indexAtj > 1){
 				this->startGridPuz = swapUp();
 				if(this->flag == 1){
@@ -1867,7 +1955,7 @@ std::vector<std::vector<int> > Puzzle::wrapAround(int increment, int targetIndex
 			}
 		}//finsihed
 		else if(ir == (((nonnum - 1) + this->sideColComplete) + this->sizePuz)){//if this inovlves nonnum2 then must create another for all bottom row 
-			if(indexAti != indexNumi){
+			if(this->indexAti != this->indexNumi){
 				this->startGridPuz = swapLeft();
 				if(this->flag == 1){
 					this->SwapsForSolveINDEX1D.push_back(0);

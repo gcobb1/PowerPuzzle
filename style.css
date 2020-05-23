@@ -1,11 +1,12 @@
 .body{
-    background-color: lightblue;
+    background-color: #7c8286;
 }
 .TitleText{
 color: darkblue;
 width: 20%;
 font-size: 450%;
 top: 0px;
+background-color: #d6e3ff;
 left: 0%;
 border: solid;
 padding-right: 5px;
@@ -52,6 +53,7 @@ right: 0%;
 color: darkblue;
 font-size: 25px;
 margin-top: -14%;
+background-color: #d6e3ff;
 left: 0%;
 border: solid;
 padding-right: 5px;
@@ -64,6 +66,7 @@ position: absolute;
 color: darkblue;
 font-size: 25px;
 margin-top: -6.5%;
+background-color: #d6e3ff;
 left: 0%;
 border: solid;
 padding-right: 5px;
@@ -97,7 +100,7 @@ position: absolute;
 }
 
 .button6{
-background-color: lightblue;
+background-color: #d6e3ff;
 margin-top: -23%;
 left: 0%;
 border-width: 4px;
@@ -112,7 +115,7 @@ color: red;
 background-color: white;
 }
 .button5{
-background-color: lightblue;
+background-color: #d6e3ff;
 margin-top: -30%;
 left: 0%;
 border-width: 4px;
@@ -131,7 +134,7 @@ color: red;
 background-color: white;
 }
 .button4{
-background-color: lightblue;
+background-color: #d6e3ff;
 margin-top: -30%;
 margin-left: 35%;
 border-width: 4px;
@@ -148,7 +151,7 @@ color: red;
 background-color: white;
 }
 .button3{
-background-color: lightblue;
+background-color: #d6e3ff;
 margin-top: -20%;
 margin-left: 35%;
 border-width: 4px;
@@ -174,7 +177,7 @@ margin-top: -11.5%;
 
 
 .button2{
-background-color: lightblue;
+background-color: #d6e3ff;
 margin-top: -25%;
 margin-left: 30%;
 border-width: 4px;
@@ -191,7 +194,7 @@ color: red;
 background-color: white;
 }
 .button1{
-background-color: lightblue;
+background-color: #d6e3ff;
 margin-top: -25%;
 margin-left: 40%;
 border-width: 4px;
@@ -227,7 +230,7 @@ table {
    font-size: 70px;
    text-align: center;
    border-style: solid;
-   background-color: #65dae8;
+   background-color: #d6e3ff;
    border-width: 10px;
    margin-top: 0px;
 }
@@ -236,7 +239,7 @@ table {
    font-size: 62px;
    text-align: center;
    border-style: solid;
-   background-color: #65dae8;
+   background-color: #d6e3ff;
    border-width: 10px;
    margin-top: 0px;
 }
@@ -245,7 +248,7 @@ table {
    font-size: 54px;
    text-align: center;
    border-style: solid;
-   background-color: #65dae8;
+   background-color: #d6e3ff;
    border-width: 10px;
    margin-top: 0px;
 }
@@ -254,7 +257,7 @@ table {
    font-size: 46px;
    text-align: center;
    border-style: solid;
-   background-color: #65dae8;
+   background-color: #d6e3ff;
    border-width: 10px;
    margin-top: 0px;
 }
@@ -263,7 +266,7 @@ table {
    font-size: 38px;
    text-align: center;
    border-style: solid;
-   background-color: #65dae8;
+   background-color: #d6e3ff;
    border-width: 10px;
    margin-top: 0px;
 }
@@ -272,7 +275,7 @@ table {
    font-size: 30px;
    text-align: center;
    border-style: solid;
-   background-color: #65dae8;
+   background-color: #d6e3ff;
    border-width: 10px;
    margin-top: 0px;
 }
@@ -281,7 +284,7 @@ table {
    font-size: 22px;
    text-align: center;
    border-style: solid;
-   background-color: #65dae8;
+   background-color: #d6e3ff;
    border-width: 10px;
    margin-top: 0px;
 }
@@ -290,7 +293,7 @@ table {
    font-size: 14px;
    text-align: center;
    border-style: solid;
-   background-color: #65dae8;
+   background-color: #d6e3ff;
    border-width: 10px;
    margin-top: 0px;
 }

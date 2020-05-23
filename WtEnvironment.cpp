@@ -79,7 +79,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 				: Wt::WApplication(env){
 	using namespace std::this_thread;
 	using namespace std::chrono;	
-	Wt::WApplication::useStyleSheet("style.css");
+	Wt::WApplication::useStyleSheet("style3.css");
 	Wt::WApplication::setBodyClass("body") ;
 	setTitle("Power Puzzle");
 	Wt::WContainerWidget *w2 = root()->addWidget(std::make_unique<Wt::WContainerWidget>());
