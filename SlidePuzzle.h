@@ -33,8 +33,8 @@ public:
 	int locationof0MIX = 0;
 	int mixINDEXi = 0;
 	int solveINDEXi = 0;
-	int mixINDEXj = 0;
-	int solveINDEXj = 0;
+	int mixINDEXj = 2;
+	int solveINDEXj = 2;
 	//puzzle default constructor that adds in the initial state of the puzzle which is starting at +10 to begin
 	Puzzle(){
 		for(int i = 0; i < sizePuz; i++){

@@ -173,7 +173,8 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 		puzzle->startGridPuz = puzzle->freshGrid;
 		this->styler = "number-item" + std::to_string(this->size);
 		table->setStyleClass(this->styler);
-		this->clearAddTable(puzzle->startGridPuz, 0, 0);
+		
+		this->clearAddTable(puzzle->startGridPuz, (this->size - 1), (this->size - 1));
 	};
 	slider2->valueChanged().connect(std::bind(SwapSizer));
 	//function called when button for visualizer is clicked
@@ -259,6 +260,8 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 		puzzle->Fresh();
 		puzzle->startGridPuz = puzzle->freshGrid;	
 		puzzle->startGridPuz = puzzle->mixUp();
+		puzzle->mixINDEXj = this->size - 1;
+		puzzle->mixINDEXi = this->size - 1;
 		for(int k = 0; k < puzzle->SwapsForMixUpINDEX1D.size(); k++){
 			if(puzzle->SwapsForMixUpINDEX1D[k] == 0){
 				if(puzzle->mixINDEXj != 0){

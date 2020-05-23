@@ -1,10 +1,5 @@
-Swapping Left for last row i = 3 sides  completed = 0this->sizePuz - 1 - this->sideColComplete = ?
-swappingleft
-swappingleft
-Swapping Left for last row i = 15 sides  completed = 0this->sizePuz - 1 - this->sideColComplete = ?
-swappingleft
-swappingleft
-swappingleft
-swappingleft
-Swapping Left for last row i = 16 sides  completed = 1this->sizePuz - 1 - this->sideColComplete = ?
-Swapping Left for last row i = 17 sides  completed = 2this->sizePuz - 1 - this->sideColComplete = ?
+someFlag:0
+flagSLotting2 Happening and i = 13
+Sides Complete: 1
+flagSLotting2 Happening and i = 14
+Sides Complete: 1
