@@ -45,5 +45,9 @@ protected:
 	Wt::WColor *Color;
 	int speedSolve = 100;
 	int sizeGrid = 3;
+	int begunFlag = 0;
+	int flagToBeginFXN = 0;
+	int flagToBeginSizer = 0;
+	int flagToBeginSolver = 0;
 };
 #endif

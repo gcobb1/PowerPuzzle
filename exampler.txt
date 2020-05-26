@@ -719,3 +719,236 @@ flagSLotting2 Happening and i = 97
 Sides Complete: 7
 flagSLotting2 Happening and i = 98
 Sides Complete: 7
+EDGE CASE FOR 3,2 is CALLEDswappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+someFlag:0
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 91
+Sides Complete: 1
+flagSLotting2 Happening and i = 92
+Sides Complete: 2
+flagSLotting2 Happening and i = 93
+Sides Complete: 3
+flagSLotting2 Happening and i = 94
+Sides Complete: 4
+flagSLotting2 Happening and i = 95
+Sides Complete: 5
+flagSLotting2 Happening and i = 96
+Sides Complete: 6
+flagSLotting2 Happening and i = 97
+Sides Complete: 7
+flagSLotting2 Happening and i = 98
+Sides Complete: 7
+someFlag:0
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 43
+Sides Complete: 1
+flagSLotting2 Happening and i = 44
+Sides Complete: 2
+flagSLotting2 Happening and i = 45
+Sides Complete: 3
+flagSLotting2 Happening and i = 46
+Sides Complete: 4
+flagSLotting2 Happening and i = 47
+Sides Complete: 4
+someFlag:0
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 43
+Sides Complete: 1
+flagSLotting2 Happening and i = 44
+Sides Complete: 2
+flagSLotting2 Happening and i = 45
+Sides Complete: 3
+flagSLotting2 Happening and i = 46
+Sides Complete: 4
+flagSLotting2 Happening and i = 47
+Sides Complete: 4
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+swappingleft
+swappingleft
+swappingleft
+someFlag:1
+flagSLotting2 Happening and i = 13
+Sides Complete: 1
+someFlag:0
+flagSLotting2 Happening and i = 14
+Sides Complete: 1
+EDGE CASE FOR 3,2 is CALLEDswappingleft
+swappingleft
+swappingleft
+someFlag:1
+flagSLotting2 Happening and i = 13
+Sides Complete: 1
+someFlag:0
+flagSLotting2 Happening and i = 14
+Sides Complete: 1
+EDGE CASE FOR 3,2 is CALLEDsomeFlag:0
+EDGE CASE FOR 3,2 is CALLEDEDGE CASE FOR 3,2 is CALLEDswappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 57
+Sides Complete: 1
+flagSLotting2 Happening and i = 58
+Sides Complete: 2
+flagSLotting2 Happening and i = 59
+Sides Complete: 3
+flagSLotting2 Happening and i = 60
+Sides Complete: 4
+flagSLotting2 Happening and i = 61
+Sides Complete: 5
+flagSLotting2 Happening and i = 62
+Sides Complete: 5
+EDGE CASE FOR 3,2 is CALLEDswappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+EDGE CASE FOR 3,2 is CALLEDswappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+someFlag:0
+EDGE CASE FOR 3,2 is CALLEDswappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 43
+Sides Complete: 1
+flagSLotting2 Happening and i = 44
+Sides Complete: 2
+flagSLotting2 Happening and i = 45
+Sides Complete: 3
+flagSLotting2 Happening and i = 46
+Sides Complete: 4
+flagSLotting2 Happening and i = 47
+Sides Complete: 4
+someFlag:0
+someFlag:0
+someFlag:0
+someFlag:0
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+someFlag:1
+flagSLotting2 Happening and i = 13
+Sides Complete: 1
+someFlag:0
+flagSLotting2 Happening and i = 14
+Sides Complete: 1
+swappingleft
+swappingleft
+swappingleft
+someFlag:1
+flagSLotting2 Happening and i = 13
+Sides Complete: 1
+someFlag:0
+flagSLotting2 Happening and i = 14
+Sides Complete: 1
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+someFlag:0
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 92
+Sides Complete: 2
+flagSLotting2 Happening and i = 93
+Sides Complete: 3
+flagSLotting2 Happening and i = 94
+Sides Complete: 4
+flagSLotting2 Happening and i = 95
+Sides Complete: 5
+flagSLotting2 Happening and i = 96
+Sides Complete: 6
+flagSLotting2 Happening and i = 97
+Sides Complete: 7
+flagSLotting2 Happening and i = 98
+Sides Complete: 7
+EDGE CASE FOR 3,2 is CALLEDflagSLotting2 Happening and i = 7
+Sides Complete: 0
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+swappingleft
+swappingleft
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
+flagSLotting2 Happening and i = 7
+Sides Complete: 0
