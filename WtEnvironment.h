@@ -10,6 +10,9 @@
 #include <Wt/WColor.h>
 #include <cstdlib>
 #include "SlidePuzzle.h"
+#include <Wt/WImage.h>
+
+
 
 class Puzzle;
 //Table Application Class inherit WApplication
@@ -27,8 +30,10 @@ protected:
 	Wt::WText *counterT;	
 	std::string styler = "number-item3";
 	std::string styler2 = "td .three";
+	Wt::WText *IntroText;
 	Wt::WText *TitleText;
-
+	Wt::WImage *image;
+	Wt::WImage *image2;
 	Wt::WText *sizeGridText;
 	Wt::WText *speedSolveText;
 	Wt::WText *MovesText_;
@@ -43,11 +48,12 @@ protected:
 	int size = 3;
 	int indexOF0 = 3;
 	Wt::WColor *Color;
-	int speedSolve = 100;
+	int speedSolve = 33;
 	int sizeGrid = 3;
 	int begunFlag = 0;
 	int flagToBeginFXN = 0;
 	int flagToBeginSizer = 0;
 	int flagToBeginSolver = 0;
+	int introFlag = 1;
 };
 #endif

@@ -27,6 +27,41 @@
 #include <Wt/WImage.h>
 void tableApplication::clearAddTable(std::vector<std::vector<int> > startGridPuz2, int index0Tablei, int index0Tablej){ 
 	table->clear();
+	/*
+	switch(this->size) {
+		case 3:
+			this->styler2 = "td .three";
+      		break; 
+   		case 4:
+     			this->styler2 = "td .four";
+      		break; 
+		case 5:
+			this->styler2 = "td .five";
+      		break; 
+   		case 6:
+     			this->styler2 = "td .six";
+      		break; 
+		case 7:
+			this->styler2 = "td .seven";
+      		break; 
+   		case 8:
+     			this->styler2 = "td .eight";
+      		break; 
+		case 9:
+			this->styler2 = "td .nine";
+      		break; 
+   		case 10:
+     			this->styler2 = "td .ten";
+      		break; 
+
+
+   // you can have any number of case statements.
+   		default : 
+      			this->styler2 = "td";
+	}
+
+*/
+
 	//this->styler2 = "td." + std::to_string(this->size);
 	for(int i = 0; i < (this->size); i++){
 		for(int j = 0; j < (this->size); j++){
@@ -94,18 +129,18 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
         button3->setStyleClass("button3");      
 	Wt::WPushButton *button4 = w2->addWidget(std::make_unique<Wt::WPushButton>("Up!"));
 	button4->setStyleClass("button4");
-	Wt::WPushButton *button5 = w2->addWidget(std::make_unique<Wt::WPushButton>("Mixer!"));    
+	Wt::WPushButton *button5 = w2->addWidget(std::make_unique<Wt::WPushButton>("MixUp!"));    
         button5->setStyleClass("button5");      
 	Wt::WPushButton *button6 = w2->addWidget(std::make_unique<Wt::WPushButton>("Solver!"));
 	button6->setStyleClass("button6");
 	Wt::WSlider *slider = w2->addNew<Wt::WSlider>();
-	slider->resize(200, 25);
+	slider->resize(250, 25);
 	slider->setNativeControl(true);	
 	slider->setRange(0, 500);	
-	slider->setValue(33);
+	slider->setValue(100);
 	slider->setStyleClass("slider");
 	Wt::WSlider *slider2 = w2->addNew<Wt::WSlider>();
-	slider2->resize(200, 25);
+	slider2->resize(250, 25);
 	slider2->setNativeControl(true);	
 	slider2->setRange(3, 10);	
 	slider2->setValue(3);
@@ -147,7 +182,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 
         speedSolveText = w2-> addWidget(std::make_unique<Wt::WText>("Speed Of Solver"));
  	speedSolveText->setStyleClass("speedSolveText");
-        sizeGridText = w2-> addWidget(std::make_unique<Wt::WText>("Size Of Puzzle"));
+        sizeGridText = w2-> addWidget(std::make_unique<Wt::WText>("Size of Puzzle"));
  	sizeGridText->setStyleClass("sizeGridText");
 	Solved = w2->addWidget(std::make_unique<Wt::WText>("SOLVED!!"));
 	Solved->setStyleClass("Solved");
