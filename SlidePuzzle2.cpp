@@ -81,9 +81,9 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 	int randomFlag = 0;
 	int flagSlotting1 = 0;
 	int flagSlotting2 = 0;
-	std::ofstream ofile;
+//	std::ofstream ofile;
 	int flagSlotting3 = 0;
-	ofile.open("exampler.txt", std::ios::app);
+//	ofile.open("exampler.txt", std::ios::app);
 	int indexNumtoSwap;
 	int tempi = 0;
 	int tempj = 0;
@@ -111,7 +111,7 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 		counterSide = 0;
 		this->sideColComplete = 0;
 		if(someFlag == 1){
-			ofile << "Some Flag = 1 and i: " << i << "\n";	
+			//ofile << "Some Flag = 1 and i: " << i << "\n";	
 		}
 /*	
 		
@@ -170,12 +170,12 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 				correctspotsVector[(((this->sizePuz - 2) * (this->sizePuz)) + incrementer001)] = -1;
 			}
 		}
-		ofile << "i: " << i << "\n";
-		ofile << "CorrectSpotsVector index: ";
+		//ofile << "i: " << i << "\n";
+		//ofile << "CorrectSpotsVector index: ";
 		for(int jjjjj = 0; jjjjj < correctspotsVector.size(); jjjjj++){
-			ofile << jjjjj << "... Correct? " << correctspotsVector[jjjjj] << "\n";
+			//ofile << jjjjj << "... Correct? " << correctspotsVector[jjjjj] << "\n";
 		}
-		ofile << "\n";
+		//ofile << "\n";
 		counterSide = 0;
 		this->sideColComplete = 0;
 		for(int increment101 = 0; (increment101 < (this->sizePuz - 2)); increment101++){
@@ -196,7 +196,7 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 //				i = (((this->sizePuz - 2) * this->sizePuz) + this->sideColComplete);
 //			}
 
-		ofile << "Number of sides Complete: " << this->sideColComplete << "\n";
+		//ofile << "Number of sides Complete: " << this->sideColComplete << "\n";
 		if((i >= nonnum) && (i < ((this->sizePuz * this->sizePuz) - this->sizePuz))){
 			if((this->sideColComplete - (i % this->sizePuz)) != 0){	
 				if(correctspotsVector[(((this->sizePuz - 2) * this->sizePuz) + this->sideColComplete)] == -1){
@@ -205,10 +205,10 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 						randomFlag = 1;
 					}
 				
-				ofile << "I is changed to: ";
+				//ofile << "I is changed to: ";
 				i = (((this->sizePuz * this->sizePuz) - this->sizePuz) + this->sideColComplete);
-				ofile << i << "\n";
-				ofile << "someFlag: " << someFlag << "\n";
+				//ofile << i << "\n";
+				//ofile << "someFlag: " << someFlag << "\n";
 				}
 			}//else someFlag = 1???
 			//if(someFlag == 1){
@@ -336,7 +336,7 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 		
 */
 		if(i == 13){
-			ofile<< "someFlag:" << someFlag << "\n";
+			//ofile<< "someFlag:" << someFlag << "\n";
 		}
 		if(i != 0){
 		if(correctspotsVector[i - 1] == -1){
@@ -398,8 +398,8 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 				}
 			}	
 			if(flagSlotting2 == 1){
-				ofile << "flagSLotting2 Happening and i = " << i << "\n";
-				ofile << "Sides Complete: " << this->sideColComplete << "\n";
+				//ofile << "flagSLotting2 Happening and i = " << i << "\n";
+				//ofile << "Sides Complete: " << this->sideColComplete << "\n";
 				flagSlotting2 = 0;
 				this->index1D = findIndex0(0);	//find indexes of 0 in 1d and 2d
 				this->indexAti	= iIndex0(this->index1D);
@@ -457,7 +457,7 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 		
 		if((correctspotsVector[i] == -1) || (i == (nonnum2 + this->sizePuz))){	//if the item is not placed correctly in the correct spot vector
 			if( i == 36){
-				ofile << "What am I doing here?!!!!!!" << "\n";
+				//ofile << "What am I doing here?!!!!!!" << "\n";
 			}
 			this->index1D = findIndex0(0);	//find indexes of 0 in 1d and 2d
 			this->indexAti	= iIndex0(this->index1D);
@@ -501,7 +501,7 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 				}// FIXED 1.8//probably should add 1 + this
 				indexofThr = this->findIndex0((this->sizePuz + (this->sizePuz * this->topRowComplete)));//
 				if(indexofThr == ((this->topRowComplete * this->sizePuz) + (this->sizePuz - 2))){		
-					ofile << "EDGE CASE FOR 3,2 is CALLED";
+					//ofile << "EDGE CASE FOR 3,2 is CALLED";
 					this->startGridPuz = this->swapLeft();			
 					if(this->flag == 1){
 						this->SwapsForSolveINDEX1D.push_back(0);
@@ -647,7 +647,7 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 
 						//ofile << "Swapping Left for last row i = " << i << " sides  completed = " << this->sideColComplete << "this->sizePuz - 1 - this->sideColComplete = ?\n";
 						for(int inc12 = 0; inc12 < (tempj - this->sideColComplete); inc12++){
-							ofile << "swappingleft\n";
+							//ofile << "swappingleft\n";
 							this->startGridPuz = this->swapLeft();
 							if(this->flag == 1){
 								this->SwapsForSolveINDEX1D.push_back(0);
@@ -1014,7 +1014,7 @@ std::vector<std::vector<int> > Puzzle::slide_puzzle(){
 		}
 	}
 	
-	ofile.close();
+	//ofile.close();
 	return this->startGridPuz;
 }
 
