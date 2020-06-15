@@ -30,18 +30,18 @@ void tableApplication::clearAddTable(std::vector<std::vector<int> > startGridPuz
 	//this->styler2 = "td." + std::to_string(this->size);
 	for(int i = 0; i < (this->size); i++){
 		for(int j = 0; j < (this->size); j++){
-			if(j == index0Tablej && i == index0Tablei){
-	    			table->elementAt((i), (j))->addNew<Wt::WText>(" ");	
-	    			
-				table->elementAt((i),(j))->setId("t123");
-				table->elementAt((i),(j))->setStyleClass("td");
-		
-			}
-			else{
+			if((j != index0Tablej) || (i != index0Tablei)){
 	        		this->elementnum = startGridPuz2[i][j];
 	    			this->table->elementAt((i), (j))->addNew<Wt::WText>(std::to_string(this->elementnum));
 	    			this->table->elementAt((i),(j))->setStyleClass("td");
 			}
+			else{
+	    			table->elementAt((i), (j))->addNew<Wt::WText>(" ");	
+				table->elementAt((i),(j))->setId("t123");
+				table->elementAt((i),(j))->setStyleClass("td");
+		
+			}
+				
 		}
         }
 }
@@ -211,60 +211,60 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 			puzzle->startGridPuz = puzzle->slide_puzzle();
 			for(int inc10 = 0; inc10 < puzzle->SwapsForSolveINDEX1D.size(); inc10++){
 				if(puzzle->SwapsForSolveINDEX1D[inc10] == 0){
-					if(puzzle->solveINDEXj != 0){
+					//if(puzzle->solveINDEXj != 0){
 						puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj] = puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj - 1];	
 						puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj - 1] = 0;
 						puzzle->solveINDEXj = puzzle->solveINDEXj -1;
-						puzzle->flag = 1;
-						if(puzzle->flag == 1){
+					//	puzzle->flag = 1;
+					//	if(puzzle->flag == 1){
 							sleep_for(milliseconds(this->speedSolve));
 							this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi,puzzle->solveINDEXj);
 							this->processEvents();
-							puzzle->flag = 0;
-						}
-					}
+					//		puzzle->flag = 0;
+						//}
+					//}
 				}
 				else if(puzzle->SwapsForSolveINDEX1D[inc10] == 2){
-					if(puzzle->solveINDEXi != 0){
+					//if(puzzle->solveINDEXi != 0){
 						puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj] = puzzle->solveTemp[puzzle->solveINDEXi - 1][puzzle->solveINDEXj];
 						puzzle->solveTemp[puzzle->solveINDEXi - 1][puzzle->solveINDEXj] = 0;
 						puzzle->solveINDEXi = puzzle->solveINDEXi - 1;
-						puzzle->flag = 1;
-						if(puzzle->flag == 1){
+					//	puzzle->flag = 1;
+					//	if(puzzle->flag == 1){
 							sleep_for(milliseconds(this->speedSolve));
 							this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi, puzzle->solveINDEXj);
 							this->processEvents();	
-							puzzle->flag = 0;
-						}
-					}
+					//		puzzle->flag = 0;
+					//	}
+					//}
 				}
 				else if(puzzle->SwapsForSolveINDEX1D[inc10] == 1){
-					if(puzzle->solveINDEXj != (this->size - 1)){
+					//if(puzzle->solveINDEXj != (this->size - 1)){
 						puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj] = puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj+1];
 						puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj+1] = 0;
 						puzzle->solveINDEXj = puzzle->solveINDEXj + 1;
-						puzzle->flag = 1;
-						if(puzzle->flag == 1){
+					//	puzzle->flag = 1;
+					//	if(puzzle->flag == 1){
 							sleep_for(milliseconds(this->speedSolve));
 							this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi, puzzle->solveINDEXj);
 							this->processEvents();
-							puzzle->flag = 0;
-						}
-					}
+					//		puzzle->flag = 0;
+					//	}
+					//}
 				}
 				else if(puzzle->SwapsForSolveINDEX1D[inc10] == 3){
-					if(puzzle->solveINDEXi != (this->size - 1)){
+					//if(puzzle->solveINDEXi != (this->size - 1)){
 						puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj] = puzzle->solveTemp[puzzle->solveINDEXi + 1][puzzle->solveINDEXj];
 						puzzle->solveTemp[puzzle->solveINDEXi + 1][puzzle->solveINDEXj] = 0;
 						puzzle->solveINDEXi = puzzle->solveINDEXi + 1;
-						puzzle->flag = 1;
-						if(puzzle->flag == 1){
+					//	puzzle->flag = 1;
+					//	if(puzzle->flag == 1){
 							sleep_for(milliseconds(this->speedSolve));
 							this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi, puzzle->solveINDEXj);
 							this->processEvents();
-							puzzle->flag = 0;
-						}
-					}
+					//		puzzle->flag = 0;
+					//	}
+					//}
 				}
 			}	
 			puzzle->checkSolve();
