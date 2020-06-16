@@ -1,5 +1,16 @@
 #ifndef Wt_Environment_H
 #define Wt_Environment_H
+
+/*****
+Author: Gavin Cobb
+Date: April 2020
+
+The Purpose of thise File is to hold the class member method declarations for the tableapplication that corresponds to the frontend and connects to the
+backend of the Puzzle object created
+*****/
+
+
+
 //#include <boost/bind.hpp>
 #include <Wt/WApplication.h>
 #include <Wt/WLineEdit.h>
@@ -15,7 +26,7 @@
 
 
 class Puzzle;
-//Table Application Class inherit WApplication
+//Table Application class inheritting WApplication
 class tableApplication : public Wt::WApplication
 {
 public:
@@ -24,6 +35,7 @@ public:
 	void clearAddTable(std::vector<std::vector<int> > startGridPuz2, int index0Tablei, int index0Tablej); 
 	int elementnum = 0;	//index of number in 2D Vector in 1D
 protected:
+	//widgets
 	Wt::WText *Solved;
         Wt::WLineEdit *nameEdit_;
 	Wt::WText *SolidMovesText_;
@@ -45,7 +57,7 @@ protected:
         Wt::WText *index0;
         int indexofFrom;
 	int indexofTo;
-	int size = 3;
+	int size = 3; 
 	int indexOF0 = 3;
 	Wt::WColor *Color;
 	int speedSolve = 33;

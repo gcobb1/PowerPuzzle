@@ -1,3 +1,14 @@
+/*********
+
+Author: Gavin Cobb
+Date: April 2020
+
+The purpose of this file is to hold the implementations of the tableApplication object methods that create the front end mechanism
+as well as connect to the backend mechanism designed in SlidePuzzle2.cpp 
+
+********/
+
+
 //#include <boost/bind.hpp>
 #include <Wt/WApplication.h>
 #include <Wt/WBreak.h>
@@ -25,12 +36,14 @@
 #include <thread>
 #include <mutex>
 #include <Wt/WImage.h>
+
+
+//Clears the table attached to the front end and adds the table connected to Power Puzzles backend
 void tableApplication::clearAddTable(std::vector<std::vector<int> > startGridPuz2, int index0Tablei, int index0Tablej){ 
 	table->clear();
-	//this->styler2 = "td." + std::to_string(this->size);
 	for(int i = 0; i < (this->size); i++){
 		for(int j = 0; j < (this->size); j++){
-			if((j != index0Tablej) || (i != index0Tablei)){
+			if((j != index0Tablej) || (i != index0Tablei)){	//if the indexes correlate to a 0 in the backend the space is blank in frontend
 	        		this->elementnum = startGridPuz2[i][j];
 	    			this->table->elementAt((i), (j))->addNew<Wt::WText>(std::to_string(this->elementnum));
 	    			this->table->elementAt((i),(j))->setStyleClass("td");
@@ -46,19 +59,23 @@ void tableApplication::clearAddTable(std::vector<std::vector<int> > startGridPuz
         }
 }
 
+
+//Contructs the application and deals with client-server manipulations
 tableApplication::tableApplication(const Wt::WEnvironment& env)
 				: Wt::WApplication(env){
-//	this->addMetaHeader(Wt::MetaName, "viewport", "width=device-width, initial-scale=1");
-	this->enableAjax();
+
 	using namespace std::this_thread;
 	using namespace std::chrono;	
-
-	this->addMetaHeader("viewport", "width=device-width, initial-scale=1.0");
-	Wt::WApplication::useStyleSheet("style3.css");
-	//Wt::WApplication::addMetaHeader("viewport", "width=device-width, intial-scale=1.0", "en");
 	
+	//the following block configures the style of the application and necessary configurations for responsiveness 
+	this->enableAjax();
+	this->addMetaHeader("viewport", "width=device-width, initial-scale=1.0");	
+	Wt::WApplication::useStyleSheet("style3.css");	
 	Wt::WApplication::setBodyClass("body") ;
 	setTitle("Power Puzzle");
+
+
+	//Widgets are stores in the primary container w2
 	Wt::WContainerWidget *w2 = root()->addWidget(std::make_unique<Wt::WContainerWidget>());
         w2->setContentAlignment(Wt::AlignmentFlag::Center);	
 	table = w2->addWidget(std::make_unique<Wt::WTable>());
@@ -82,9 +99,10 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 	}
 	//Set Table Styles	
 	this->styler = "number-item" + std::to_string(this->size);	
-	//this->styler2 = "td." + std::to_string(this->size);
 	table->setStyleClass(styler);
 	table->addStyleClass("table-bordered");
+
+
         //Create 4 Buttons to move pieces
 	Wt::WPushButton *button = w2->addWidget(std::make_unique<Wt::WPushButton>("Right!"));    
         button->setStyleClass("button1");      
@@ -112,16 +130,19 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 	slider2->setStyleClass("slider2");	
 	slider2->enableAjax();
 	slider->enableAjax();	
+
+	//The following is an introduction style for when the application starts
 	image = w2->addWidget(std::make_unique<Wt::WImage>("https://piskel-imgstore-b.appspot.com/img/e0f74185-9fa1-11ea-b04a-fbf190883c80.gif"));
-
 	image2 = w2->addWidget(std::make_unique<Wt::WImage>("https://piskel-imgstore-b.appspot.com/img/511461a6-9fa2-11ea-9bfc-fbf190883c80.gif"));
-
 	image->setStyleClass("intro");
-
 	image2->setStyleClass("intro2");
-	//Create a Puzzle object to work as the model for the table to get its changed data from
+
+
+	//Create a Puzzle object to work as the backend model for the table to get its changed data from
 	Puzzle *puzzle = new Puzzle();
 	this->startGrid = puzzle->startGridPuz;
+
+	//Creates more widgets in the container and adds styles
 	SolidMovesText_ = w2-> addWidget(std::make_unique<Wt::WText>("Number of\nMoves:"));
 	SolidMovesText_->setStyleClass("SolidMoves");
         MovesText_ = w2-> addWidget(std::make_unique<Wt::WText>(std::to_string(puzzle->numMoves)));
@@ -130,7 +151,9 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
         TitleText = w2-> addWidget(std::make_unique<Wt::WText>("Power\nPuzzle!"));
 	TitleText->setWordWrap(true);	
 	TitleText->setStyleClass("TitleText");
-        IntroText = w2-> addWidget(std::make_unique<Wt::WText>("Slide the numbers into the blank square using the buttons to solve the puzzle!"));
+       
+	//This is more logic and style for the introduction widgets
+	IntroText = w2-> addWidget(std::make_unique<Wt::WText>("Slide the numbers into the blank square using the buttons to solve the puzzle!"));
 	IntroText->setWordWrap(true);	
 	IntroText->setStyleClass("IntroText");
 	if(this->introFlag == 1){
@@ -144,7 +167,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 		image2->hide();
 	}
 	
-
+	//More styles and widgets are added to the container.
         speedSolveText = w2-> addWidget(std::make_unique<Wt::WText>("Speed Of Solver"));
  	speedSolveText->setStyleClass("speedSolveText");
         sizeGridText = w2-> addWidget(std::make_unique<Wt::WText>("Size Of Puzzle"));
@@ -153,6 +176,9 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 	Solved->setStyleClass("Solved");
 	Solved->hide();
 
+
+	//counter is used to store the amount of numbers in the solved permutation
+	//when it equals the size of the puzzle it is solved
 	if(puzzle->counter == (this->size * this->size)){
 		Solved->show();
 	}
@@ -160,11 +186,15 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 		Solved->hide();
 	}
 
+	//function connected to slider object signal that changes speed of solver
 	slider->valueChanged().connect([=] {
 		this->speedSolve = slider->value();
 	});
+
+	//Function connected to Sizer button signal that changes the size of the table
 	auto SwapSizer = [=]{
 		this->flagToBeginSizer = 1;	
+		//must wait for other functions to end before changing
 		if((this->flagToBeginFXN == 0) && (this->flagToBeginSolver == 0)){
 			if(introFlag == 1){
 				introFlag = 0;
@@ -191,8 +221,12 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 	
 	};
 	slider2->valueChanged().connect(std::bind(SwapSizer));
-	//function called when button for visualizer is clicked
+
+	//function that correlates to the solver visualizer signal
+	//uses a list of steps to solve the puzzle created from the function that solves the backend 
+	//clearsadds table based on this list to visualize a solution in the frontend
 	auto SwapSolver = [=]{
+		//must wait for mix to finish
 		if((this->flagToBeginFXN == 0) && (this->begunFlag == 0)){
 			if(introFlag == 1){
 				introFlag = 0;
@@ -209,62 +243,41 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 			puzzle->solveINDEXi = puzzle->indexAti;
 			puzzle->solveINDEXj = puzzle->indexAtj;
 			puzzle->startGridPuz = puzzle->slide_puzzle();
+
+			//iterates through list to determine how to manipulate the table to visualize a solution.
+			//manipulation is based on 0,1,2,3 values corresponding to movements left, right, up, down
 			for(int inc10 = 0; inc10 < puzzle->SwapsForSolveINDEX1D.size(); inc10++){
 				if(puzzle->SwapsForSolveINDEX1D[inc10] == 0){
-					//if(puzzle->solveINDEXj != 0){
 						puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj] = puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj - 1];	
 						puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj - 1] = 0;
 						puzzle->solveINDEXj = puzzle->solveINDEXj -1;
-					//	puzzle->flag = 1;
-					//	if(puzzle->flag == 1){
-							sleep_for(milliseconds(this->speedSolve));
-							this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi,puzzle->solveINDEXj);
-							this->processEvents();
-					//		puzzle->flag = 0;
-						//}
-					//}
+						sleep_for(milliseconds(this->speedSolve));
+						this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi,puzzle->solveINDEXj);
+						this->processEvents();
 				}
 				else if(puzzle->SwapsForSolveINDEX1D[inc10] == 2){
-					//if(puzzle->solveINDEXi != 0){
 						puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj] = puzzle->solveTemp[puzzle->solveINDEXi - 1][puzzle->solveINDEXj];
 						puzzle->solveTemp[puzzle->solveINDEXi - 1][puzzle->solveINDEXj] = 0;
 						puzzle->solveINDEXi = puzzle->solveINDEXi - 1;
-					//	puzzle->flag = 1;
-					//	if(puzzle->flag == 1){
-							sleep_for(milliseconds(this->speedSolve));
-							this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi, puzzle->solveINDEXj);
-							this->processEvents();	
-					//		puzzle->flag = 0;
-					//	}
-					//}
+						sleep_for(milliseconds(this->speedSolve));
+						this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi, puzzle->solveINDEXj);
+						this->processEvents();	
 				}
 				else if(puzzle->SwapsForSolveINDEX1D[inc10] == 1){
-					//if(puzzle->solveINDEXj != (this->size - 1)){
 						puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj] = puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj+1];
 						puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj+1] = 0;
 						puzzle->solveINDEXj = puzzle->solveINDEXj + 1;
-					//	puzzle->flag = 1;
-					//	if(puzzle->flag == 1){
-							sleep_for(milliseconds(this->speedSolve));
-							this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi, puzzle->solveINDEXj);
-							this->processEvents();
-					//		puzzle->flag = 0;
-					//	}
-					//}
+						sleep_for(milliseconds(this->speedSolve));
+						this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi, puzzle->solveINDEXj);
+						this->processEvents();
 				}
 				else if(puzzle->SwapsForSolveINDEX1D[inc10] == 3){
-					//if(puzzle->solveINDEXi != (this->size - 1)){
 						puzzle->solveTemp[puzzle->solveINDEXi][puzzle->solveINDEXj] = puzzle->solveTemp[puzzle->solveINDEXi + 1][puzzle->solveINDEXj];
 						puzzle->solveTemp[puzzle->solveINDEXi + 1][puzzle->solveINDEXj] = 0;
 						puzzle->solveINDEXi = puzzle->solveINDEXi + 1;
-					//	puzzle->flag = 1;
-					//	if(puzzle->flag == 1){
-							sleep_for(milliseconds(this->speedSolve));
-							this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi, puzzle->solveINDEXj);
-							this->processEvents();
-					//		puzzle->flag = 0;
-					//	}
-					//}
+						sleep_for(milliseconds(this->speedSolve));
+						this->clearAddTable(puzzle->solveTemp, puzzle->solveINDEXi, puzzle->solveINDEXj);
+						this->processEvents();
 				}
 			}	
 			puzzle->checkSolve();
@@ -278,17 +291,17 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 			this->flagToBeginSolver = 0;
 			this->begunFlag = 0;
 			if(this->flagToBeginSizer == 1){
-			//	this->size = slider2->value();
-			//	puzzle->sizePuz = this->size;	
 				SwapSizer();
 			}
-
 		}
 	};	
 	button6->clicked().connect(std::bind(SwapSolver));
-//	std::mutex acctLock;	
+
+	//Function that mixes the table based on random number generation
+	//list is used to manipulate positions of numbers based on left, right, up, and down values made from backend algorithm
 	auto SwapMixer = [=]{
-//		acctLock.lock();	
+
+		//the function occurs if no other function is occuring
 		if((this->flagToBeginSolver == 0) && (this->begunFlag == 0)){
 			this->begunFlag = 1;
 			if(introFlag == 1){
@@ -301,8 +314,6 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 			Solved->hide();
 			puzzle->Fresh();
 			puzzle->startGridPuz = puzzle->freshGrid;	
-//		std::thread th1 (puzzle->mixUp, NULL);
-	//	th1.join();
 			puzzle->startGridPuz = puzzle->mixUp();
 			puzzle->mixINDEXj = this->size - 1;
 			puzzle->mixINDEXi = this->size - 1;
@@ -315,7 +326,6 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 						puzzle->mixINDEXj = puzzle->mixINDEXj -1;
 						puzzle->flag = 1;
 						if(puzzle->flag == 1){
-							//    sleep_for(milliseconds(10 / (this->size - 2)));
 							this->clearAddTable(puzzle->freshGrid, puzzle->mixINDEXi, puzzle->mixINDEXj);
 							this->processEvents();
 							puzzle->flag = 0;
@@ -330,7 +340,6 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 						puzzle->mixINDEXi = puzzle->mixINDEXi -1;
 						puzzle->flag = 1;
 						if(puzzle->flag == 1){
-						        //sleep_for(milliseconds(10 / (this->size - 2)));
 							this->clearAddTable(puzzle->freshGrid, puzzle->mixINDEXi, puzzle->mixINDEXj);
 							this->processEvents();
 							puzzle->flag = 0;
@@ -345,7 +354,6 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 						puzzle->mixINDEXj = puzzle->mixINDEXj +1;
 						puzzle->flag = 1;
 						if(puzzle->flag == 1){
-	    						//sleep_for(milliseconds(10 / (this->size - 2)));
 							this->clearAddTable(puzzle->freshGrid, puzzle->mixINDEXi, puzzle->mixINDEXj);
 							this->processEvents();
 							puzzle->flag = 0;
@@ -360,7 +368,6 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 						puzzle->mixINDEXi = puzzle->mixINDEXi +1;
 						puzzle->flag = 1;
 						if(puzzle->flag == 1){
-	    						//sleep_for(milliseconds(10 / (this->size - 2)));
 							this->clearAddTable(puzzle->freshGrid, puzzle->mixINDEXi, puzzle->mixINDEXj);
 							this->processEvents();
 						puzzle->flag = 0;
@@ -373,20 +380,17 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 			puzzle->mixINDEXi = 0;
 			puzzle->mixINDEXj = 0;
 			MovesText_->setText(std::to_string(puzzle->numMoves));
-//			acctLock.unlock();
 			this->begunFlag = 0;	
 			this->flagToBeginFXN = 0;
 			if(this->flagToBeginSizer == 1){
-			//	this->size = slider2->value();
-			//	puzzle->sizePuz = this->size;	
 				SwapSizer();
 			}
 		}
 		
 	};
-	//std::thread t;
 	button5->clicked().connect(std::bind(SwapMixer));
-//	t.join();
+	
+	//functon that swaps the number to the left of the blank to the right 	
 	auto SwapRighter = [=]{
 		if(this->begunFlag == 0){
 			if(introFlag == 1){
@@ -395,6 +399,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 				image2->hide();
 				image->hide();
 			}
+			//swap the backend model to the right then clearadd the table
 			puzzle->startGridPuz = puzzle->swapRight();
 			//set indexes for clear table
 			puzzle->index1D = puzzle->findIndex0(0);
@@ -416,6 +421,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 	};
 	button2->clicked().connect(std::bind(SwapRighter));
 
+	//same as above function but left
 	auto SwapLefter = [=]{
 		if(this->begunFlag == 0){
 				if(introFlag == 1){
@@ -445,6 +451,7 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 	};
 	button->clicked().connect(std::bind(SwapLefter));
 
+	//same as above function except up
 	auto SwapUpper = [=]{
 		if(this->begunFlag ==0){
 			if(introFlag == 1){
@@ -473,7 +480,8 @@ tableApplication::tableApplication(const Wt::WEnvironment& env)
 		}
 	};
 	button3->clicked().connect(std::bind(SwapUpper));
-
+	
+	//same as above function but down
 	auto SwapDowner = [=]{
 		if(this->begunFlag == 0){
 			if(introFlag == 1){

@@ -15,6 +15,7 @@ Description: Sliding Puzzle Visualizer written in C++, Wt framework, and Css tha
 
 int main(int argc, char **argv)
 {
+//creates instances of wt server
     return Wt::WRun(argc, argv, [](const Wt::WEnvironment& env) {
     	return std::make_unique<tableApplication>(env);
     });
