@@ -353,7 +353,732 @@ table {
    	margin-top: 0px;
 }
 
-@media only screen and (min-width: 760px) {
+@media only screen and (min-width: 400px) {
+	.body{
+		background-color: #7c8286;
+	}
+	.intro{
+		position: absolute;
+		top: 60px;
+		left: 20%;
+	}
+	.intro2{
+		position: absolute;
+		left: 5%;
+		bottom: -87.5%;
+		transform: scaleY(-1);
+	}
+	.IntroText{
+		position: absolute;
+		bottom: -100%;
+		position: absolute;
+		color: darkblue;
+		width: 100%;
+		font-size: 20px;
+		background-color: #d6e3ff;
+		left: 0%;
+		border: solid;
+		border-width: 4px;
+		border-color: darkblue;
+		position: absolute;
+	}
+	.TitleText{
+		display: none;
+		color: darkblue;
+		width: 20%;
+		font-size: 450%;
+		top: 0px;
+		background-color: #d6e3ff;
+		left: 0%;
+		border: solid;
+		padding-right: 5px;
+		padding-left: 5px;
+		border-width: 1px;
+		border-color: darkblue;
+		position: absolute;
+	}
+	.Solved{
+		font-size: 15px;
+		text-decoration: bold;
+		color: red;
+		/*
+		margin-top: -40%;
+		*/
+		left: 0px;
+		border: solid;
+		padding: 0px;
+		border-width: 5px;
+		border-color: blue;
+		position: absolute;
+		/*
+		right: 0%;
+		*/
+	}
+	.speedSolveText{
+		color: darkblue;
+		font-size: 25px;
+		width: 50%;
+		height: 8.12%;
+		margin-top: 7.5%;
+		background-color: #d6e3ff;
+		right: 0%;
+		border: solid;
+		/*
+		padding-right: 5px;
+		padding-left: 5px;
+		*/
+		border-width: 4px;
+		border-color: darkblue;
+		position: absolute;
+	}
+	.sizeGridText{
+		color: darkblue;
+		font-size: 25px;
+		margin-top: 25%;
+		width: 50%;
+		height: 8.12%;
+		background-color: #d6e3ff;
+		right: 0%;
+		border: solid;
+		/*
+		padding-right: 5px;
+		padding-left: 5px;
+		*/
+		border-width: 4px;
+		border-color: darkblue;
+		position: absolute;
+	}
+	.Moves{
+		color: darkblue;
+		font-size: 25px;
+		/*
+		margin-top: -12.5%;
+		*/
+		right: 0%;
+		border: solid;
+		padding-right: 5px;
+		padding-left: 5px;
+		border-width: 1px;
+		border-color: darkblue;
+		position: absolute;
+	}
+	.SolidMoves{
+		color: darkblue;
+		font-size: 25px;
+		/*
+		margin-top: -12.5%;
+		*/
+		right: 20%;
+		position: absolute;
+	}
+	.button6{
+		background-color: #d6e3ff;
+		margin-top: 25%;
+		width: 50%;
+		height: 10%;
+		left: 0%;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 30px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button6:hover {
+		color: red;
+		background-color: white;
+	}
+	.button5{
+		background-color: #d6e3ff;
+		margin-top: 7.5%;
+		left: 0%;
+		border-width: 4px;
+		border-color: darkblue;
+		width: 50%;
+		height: 10%;
+		font-size: 25px;
+		color: darkblue;
+		position: absolute;
+		/*
+		padding-right: 77.5px;
+		padding-left: 77.5px;
+		padding-top: 14.5px;
+		padding-bottom:14.5px;
+		*/
+	}
+	.button5:hover {
+		color: red;
+		background-color: white;
+	}
+	.button4{
+		background-color: #d6e3ff;
+		bottom: -55%;
+		margin-left: -10%;
+		height: 10%;
+		width: 25%;
+		right: auto;
+		left: 22.5%;	
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 30px;
+		color: darkblue;
+		position: absolute;
+		/*
+		padding-right: 22.75px;
+		padding-left: 22.75px;
+		*/
+	}
+	.button4:hover {
+		color: red;
+		background-color: white;
+	}
+	.button3{
+		background-color: #d6e3ff;
+		bottom: -75%;
+		width: 25%;
+		right: auto;
+		left: 12.5%;
+		
+		display: block;
+		height: 10%;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 30px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button3:hover {
+		color: red;
+		background-color: white;
+	}
+	.slider2{
+		position: absolute;
+		right: 0px;
+		margin-top: 35%;
+		margin-left: 30%;
+	}
+	.slider{
+		position: absolute;
+		right: 0px;	
+		margin-top: 17.5%;
+		margin-left: 30%
+	}
+	.button2{
+		background-color: #d6e3ff;
+		bottom: -65%;
+		left: 0px;
+		height: 10%;
+		width: 25%;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 30px;
+		color: darkblue;
+		position: absolute;
+		/*
+		padding-right: 14.4px;
+		padding-left: 14.4px;
+		*/
+	}
+	.button2:hover {
+		color: red;
+		background-color: white;
+	}
+	.button1{
+		background-color: #d6e3ff;
+		bottom: -65%;
+		width: 25%;
+		height: 10%;
+		right: auto;
+		left: 25%;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 30px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button1:hover {
+		color: red;
+		background-color: white;
+	}
+	td {
+		text-align: center;
+		border-width: 10px;
+		Border-style: solid;
+		vertical-align: middle;
+	}
+	#t123{
+		background-color: darkblue;
+	}
+	table {
+		background-color : #777777;  
+		color:blue;
+		border-color: blue;
+		border-style: solid;
+		text-align: center;
+		margin: 0 auto;
+	}
+	.number-item3{
+		font-size: 70px;
+	/*
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+		width: 100% !important;
+		height: 400px !important;
+	}
+	.number-item4{
+		font-size: 62px;
+	/*
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+		width: 100% !important;
+		height: 400px !important;
+	}
+	.number-item5{
+		font-size: 54px;
+	/*
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+		width: 100% !important;
+		height: 400px !important;
+	}
+	.number-item6{
+		font-size: 46px;
+	/*
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+		width: 100% !important;
+		height: 400px !important;
+	}
+	.number-item7{
+		font-size: 38px;
+	/*
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+		width: 100% !important;
+		height: 400px !important;
+	}
+	.number-item8{
+		font-size: 30px;
+	/* 
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+		width: 100% !important;
+		height: 400px !important;
+	}
+	.number-item9{
+		width: 100% !important;
+		height: 400px !important;
+		font-size: 22px;
+	/*
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+	}
+	.number-item10{
+		font-size: 14px;
+		width: 100% !important;
+		height: 400px !important;
+	/*
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+	}
+}
+
+
+@media only screen and (min-width: 575px) {
+	.body{
+		background-color: #7c8286;
+	}
+	.intro{
+		position: absolute;
+		top: 60px;
+		left: 30%;
+	}
+	.intro2{
+		position: absolute;
+		left: 5%;
+		bottom: auto;
+		top: 0%;
+		transform: initial;
+	}
+	.IntroText{
+		position: absolute;
+		bottom: -100%;
+		position: absolute;
+		color: darkblue;
+		width: 100%;
+		font-size: 20px;
+		background-color: #d6e3ff;
+		left: 0%;
+		border: solid;
+		border-width: 4px;
+		border-color: darkblue;
+		position: absolute;
+	}
+	.TitleText{
+		display: none;
+		color: darkblue;
+		width: 20%;
+		font-size: 450%;
+		top: 0px;
+		background-color: #d6e3ff;
+		left: 0%;
+		border: solid;
+		padding-right: 5px;
+		padding-left: 5px;
+		border-width: 1px;
+		border-color: darkblue;
+		position: absolute;
+	}
+	.Solved{
+		font-size: 15px;
+		text-decoration: bold;
+		color: red;
+		/*
+		margin-top: -40%;
+		*/
+		left: 0px;
+		border: solid;
+		padding: 0px;
+		border-width: 5px;
+		border-color: blue;
+		position: absolute;
+		/*
+		right: 0%;
+		*/
+	}
+	.speedSolveText{
+		color: darkblue;
+		font-size: 25px;
+		width: 50%;
+		height: 8.12%;
+		margin-top: 7.5%;
+		background-color: #d6e3ff;
+		right: 0%;
+		border: solid;
+		/*
+		padding-right: 5px;
+		padding-left: 5px;
+		*/
+		border-width: 4px;
+		border-color: darkblue;
+		position: absolute;
+	}
+	.sizeGridText{
+		color: darkblue;
+		font-size: 25px;
+		margin-top: 25%;
+		width: 50%;
+		height: 8.12%;
+		background-color: #d6e3ff;
+		right: 0%;
+		border: solid;
+		/*
+		padding-right: 5px;
+		padding-left: 5px;
+		*/
+		border-width: 4px;
+		border-color: darkblue;
+		position: absolute;
+	}
+	.Moves{
+		color: darkblue;
+		font-size: 25px;
+		/*
+		margin-top: -12.5%;
+		*/
+		right: 0%;
+		border: solid;
+		padding-right: 5px;
+		padding-left: 5px;
+		border-width: 1px;
+		border-color: darkblue;
+		position: absolute;
+	}
+	.SolidMoves{
+		color: darkblue;
+		font-size: 25px;
+		/*
+		margin-top: -12.5%;
+		*/
+		right: 20%;
+		position: absolute;
+	}
+	.button6{
+		background-color: #d6e3ff;
+		margin-top: 25%;
+		width: 50%;
+		height: 10%;
+		left: 0%;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 30px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button6:hover {
+		color: red;
+		background-color: white;
+	}
+	.button5{
+		background-color: #d6e3ff;
+		margin-top: 7.5%;
+		left: 0%;
+		border-width: 4px;
+		border-color: darkblue;
+		width: 50%;
+		height: 10%;
+		font-size: 25px;
+		color: darkblue;
+		position: absolute;
+		/*
+		padding-right: 77.5px;
+		padding-left: 77.5px;
+		padding-top: 14.5px;
+		padding-bottom:14.5px;
+		*/
+	}
+	.button5:hover {
+		color: red;
+		background-color: white;
+	}
+	.button4{
+		background-color: #d6e3ff;
+		bottom: 50%;
+		margin-left: -10%;
+		height: 20%;
+		width: 20%;
+		right: 0%;	
+		left: auto;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 30px;
+		color: darkblue;
+		position: absolute;
+		/*
+		padding-right: 22.75px;
+		padding-left: 22.75px;
+		*/
+	}
+	.button4:hover {
+		color: red;
+		background-color: white;
+	}
+	.button3{
+		background-color: #d6e3ff;
+		bottom: 30%;
+		width: 20%;
+		right: 0px;
+		left: auto;
+		display: block;
+		height: 20%;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 30px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button3:hover {
+		color: red;
+		background-color: white;
+	}
+	.slider2{
+		position: absolute;
+		right: 0px;
+		margin-top: 35%;
+		margin-left: 30%;
+	}
+	.slider{
+		position: absolute;
+		right: 0px;	
+		margin-top: 17.5%;
+		margin-left: 30%
+	}
+	.button2{
+		background-color: #d6e3ff;
+		bottom: 50%;
+		left: 0px;
+		height: 20%;
+		width: 20%;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 30px;
+		color: darkblue;
+		position: absolute;
+		/*
+		padding-right: 14.4px;
+		padding-left: 14.4px;
+		*/
+	}
+	.button2:hover {
+		color: red;
+		background-color: white;
+	}
+	.button1{
+		background-color: #d6e3ff;
+		bottom: 30%;
+		width: 20%;
+		height: 20%;
+		right: auto;
+		left: 0px;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 30px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button1:hover {
+		color: red;
+		background-color: white;
+	}
+	td {
+		text-align: center;
+		border-width: 10px;
+		Border-style: solid;
+		vertical-align: middle;
+	}
+	#t123{
+		background-color: darkblue;
+	}
+	table {
+		background-color : #777777;  
+		color:blue;
+		border-color: blue;
+		border-style: solid;
+		text-align: center;
+		margin: 0 auto;
+	}
+	.number-item3{
+		font-size: 70px;
+	/*
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+		width: 60% !important;
+		height: 400px !important;
+	}
+	.number-item4{
+		font-size: 62px;
+	/*
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+		width: 60% !important;
+		height: 400px !important;
+	}
+	.number-item5{
+		font-size: 54px;
+	/*
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+		width: 60% !important;
+		height: 400px !important;
+	}
+	.number-item6{
+		font-size: 46px;
+	/*
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+		width: 60% !important;
+		height: 400px !important;
+	}
+	.number-item7{
+		font-size: 38px;
+	/*
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+		width: 60% !important;
+		height: 400px !important;
+	}
+	.number-item8{
+		font-size: 30px;
+	/* 
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+		width: 60% !important;
+		height: 400px !important;
+	}
+	.number-item9{
+		width: 60% !important;
+		height: 400px !important;
+		font-size: 22px;
+	/*
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+	}
+	.number-item10{
+		font-size: 14px;
+		width: 60% !important;
+		height: 400px !important;
+	/*
+		text-align: center;
+	*/
+		border-style: solid;
+		background-color: #d6e3ff;
+		border-width: 10px;
+		margin-top: 0px;
+	}
+}
+
+
+
+@media only screen and (min-width: 900px) {
 
 	.body{
 		background-color: #7c8286;
@@ -366,6 +1091,7 @@ table {
 
 	.intro2{
 		bottom: auto;
+		top: auto;
 		transform: scaleY(1);
 		margin-top: -35%;
 		left: auto;
@@ -504,7 +1230,9 @@ table {
 		margin-top: -35%;
 		margin-left: 0px;
 		width: 15%;
+		height: 10%;
 		right: 5%;
+		left: auto;
 		border-width: 4px;
 		border-color: darkblue;
 		font-size: 25px;
@@ -521,7 +1249,9 @@ table {
 		margin-top: -22.5%;
 		margin-left: 0px;
 		width: 15%;
+		height: 10%;
 		right:  5%;
+		left: auto;
 		border-width: 4px;
 		border-color: darkblue;
 		font-size: 25px;
@@ -555,6 +1285,7 @@ table {
 		margin-top: -28.75%;
 		margin-left: 0%;
 		width: 10%;
+		height: 10%;
 		border-width: 4px;
 		border-color: darkblue;
 		font-size: 25px;
@@ -571,8 +1302,10 @@ table {
 		background-color: #d6e3ff;
 		bottom: auto;
 		margin-top: -28.75%;
-		margin-left: 0%;
+		left: auto;
 		width: 10%;
+		height: 10%;
+		right: 0%;
 		border-width: 4px;
 		border-color: darkblue;
 		font-size: 25px;
@@ -689,4 +1422,693 @@ table {
 	}
 }
 
+
+@media only screen and (min-width: 1650px) {
+
+	.body{
+		background-color: #7c8286;
+	}
+	.intro{
+		position: absolute;
+    		top: 100px;
+    		left: 37.5%;
+	}
+
+	.intro2{
+		bottom: auto;
+		top: auto;
+		transform: scaleY(1);
+		margin-top: -35%;
+		left: auto;
+		right: 20%;
+		position: absolute;
+	}
+	.IntroText{
+		position: absolute;
+		width: 15%;
+    		color: darkblue;
+    		position: absolute;
+		left: auto;
+    		right: 5%;
+		bottom: auto;
+    		top: 0px;
+    		font-size: 28px;
+    		background-color: #d6e3ff;
+    		border: solid;
+    		border-width: 4px;
+    		border-color: darkblue;
+	}
+	.TitleText{
+		display: block;
+		color: darkblue;
+		width: 20%;
+		font-size: 450%;
+		top: 0px;
+		background-color: #d6e3ff;
+		left: 0%;
+		border: solid;
+		padding-right: 5px;
+		padding-left: 5px;
+		border-width: 1px;
+		border-color: darkblue;
+		position: absolute;
+	}
+	.Solved{
+		font-size: 60px;
+		margin-left: 0px;
+		text-decoration: bold;
+		color: blue;
+		margin-top: -48%;
+		border: solid;
+		padding-right: 20px;
+		padding-left: 20px;
+		border-width: 5px;
+		border-color: blue;
+		position: absolute;
+		width: 20%;
+		left: auto;
+		right: 0px;
+	}
+	.speedSolveText{
+		color: darkblue;
+		font-size: 25px;
+		margin-top: -14%;
+		background-color: #d6e3ff;
+		left: 0%;
+		border: solid;
+		padding-right: 0px;
+		padding-left: 0px;
+		border-width: 1px;
+		border-color: darkblue;
+		position: absolute;
+		width: 20%;
+		height: auto;
+	}
+	.sizeGridText{
+		color: darkblue;
+		font-size: 25px;
+		margin-top: -6.5%;
+		background-color: #d6e3ff;
+		left: 0%;
+		border: solid;
+		padding-right: 0px;
+		padding-left: 0px;
+		border-width: 1px;
+		border-color: darkblue;
+		position: absolute;
+		width: 20%;
+		text-align: center;
+		height: auto;
+	}
+	.Moves{
+		color: darkblue;
+		font-size: 25px;
+		margin-top: -12.5%;
+		right: 0%;
+		border: solid;
+		padding-right: 5px;
+		padding-left: 5px;
+		border-width: 1px;
+		border-color: darkblue;
+		position: absolute;
+	}
+	.SolidMoves{
+		color: darkblue;
+		font-size: 25px;
+		margin-top: -12.5%;
+		right: 4%;
+		position: absolute;
+	}
+	.button6{
+		background-color: #d6e3ff;
+		margin-top: -23%;
+		width: 20%;
+		left: 0%;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 25px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button6:hover {
+		color: red;
+		background-color: white;
+	}
+	.button5{
+		background-color: #d6e3ff;
+		margin-top: -30%;
+		width: 20%;
+		left: 0%;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 25px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button5:hover {
+		color: red;
+		background-color: white;
+	}
+	.button4{
+		background-color: #d6e3ff;
+		bottom: auto;
+		margin-top: -35%;
+		margin-left: 0px;
+		width: 15%;
+		height: 10%;
+		right: 5%;
+		left: auto;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 25px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button4:hover {
+		color: red;
+		background-color: white;
+	}
+	.button3{
+		background-color: #d6e3ff;
+		bottom: auto;
+		margin-top: -22.5%;
+		margin-left: 0px;
+		width: 15%;
+		height: 10%;
+		right:  5%;
+		left: auto;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 25px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button3:hover {
+		color: red;
+		background-color: white;
+	}
+	.slider2{
+		position: absolute;
+		margin-left: 0px;
+		width: 250px !important;
+		right: auto;
+		left: 0px;
+		margin-top: -4%;
+	}
+	.slider{
+		position: absolute;
+
+		width: 250px !important;
+		right: auto;
+		left: 0px;
+		margin-top: -11.5%;
+		margin-left: 0px;
+	}
+	.button2{
+		background-color: #d6e3ff;
+		bottom: auto;
+		margin-top: -28.75%;
+		margin-left: 0%;
+		width: 10%;
+		height: 10%;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 25px;
+		color: darkblue;
+		position: absolute;
+		left: auto;
+		right: 15% !important;
+	}
+	.button2:hover {
+		color: red;
+		background-color: white;
+	}
+	.button1{
+		background-color: #d6e3ff;
+		bottom: auto;
+		margin-top: -28.75%;
+		left: auto;
+		width: 10%;
+		height: 10%;
+		right: 0%;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 25px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button1:hover {
+		color: red;
+		background-color: white;
+	}
+	td {
+		text-align: center;
+		border-width: 10px;
+		Border-style: solid;
+		vertical-align: middle;
+	}
+	#t123{
+		background-color: darkblue;
+	}
+	table {
+		background-color : #777777;  
+		color:blue;
+    		border-color: blue;
+    		border-style: solid;
+    		text-align: center;
+    		margin: 0 auto;
+	}
+	.number-item3{
+ 		font-size: 70px;
+		width: 50% !important;
+		height: 1000px !important;
+		text-align: center;
+   		border-style: solid;
+   		background-color: #d6e3ff;
+   		border-width: 10px;
+   		margin-top: 0px;
+	}
+	.number-item4{
+		font-size: 62px;
+		width: 50% !important;
+		height: 1000px !important;
+
+	   	text-align: center;
+	   	border-style: solid;
+	   	background-color: #d6e3ff;
+	   	border-width: 10px;
+	   	margin-top: 0px;
+	}
+	.number-item5{
+	   	font-size: 54px;
+		width: 50% !important;
+		height: 1000px !important;
+
+	   	text-align: center;
+	   	border-style: solid;
+	   	background-color: #d6e3ff;
+	   	border-width: 10px;
+	   	margin-top: 0px;
+	}
+	.number-item6{
+   		font-size: 46px;
+   		
+		width: 50% !important;
+		height: 1000px !important;
+		text-align: center;
+   		border-style: solid;
+   		background-color: #d6e3ff;
+   		border-width: 10px;
+   		margin-top: 0px;
+	}
+	.number-item7{
+   		font-size: 38px;
+		
+		width: 50% !important;
+   		height: 1000px !important;
+		text-align: center;
+   		border-style: solid;
+   		background-color: #d6e3ff;
+   		border-width: 10px;
+   		margin-top: 0px;
+	}
+	.number-item8{
+   		font-size: 30px;
+	
+		width: 50% !important;
+   		height: 1000px !important;
+		text-align: center;
+   		border-style: solid;
+   		background-color: #d6e3ff;
+   		border-width: 10px;
+   		margin-top: 0px;
+	}
+	.number-item9{
+   		font-size: 22px;
+
+		width: 50% !important;
+   		height: 1000px !important;	
+		text-align: center;
+   		border-style: solid;
+   		background-color: #d6e3ff;
+   		border-width: 10px;
+   		margin-top: 0px;
+	}
+	.number-item10{
+   		font-size: 14px;
+
+		width: 50% !important;
+   		height: 1000px !important;	
+		text-align: center;
+   		border-style: solid;
+   		background-color: #d6e3ff;
+   		border-width: 10px;
+   		margin-top: 0px;
+	}
+}
+
+
+@media only screen and (min-width: 2115px) {
+
+	.body{
+		background-color: #7c8286;
+	}
+	.intro{
+		position: absolute;
+    		top: 100px;
+    		left: 37.5%;
+	}
+
+	.intro2{
+		bottom: auto;
+		top: auto;
+		transform: scaleY(1);
+		margin-top: -35%;
+		left: auto;
+		right: 20%;
+		position: absolute;
+	}
+	.IntroText{
+		position: absolute;
+		width: 15%;
+    		color: darkblue;
+    		position: absolute;
+		left: auto;
+    		right: 5%;
+		bottom: auto;
+    		top: 0px;
+    		font-size: 28px;
+    		background-color: #d6e3ff;
+    		border: solid;
+    		border-width: 4px;
+    		border-color: darkblue;
+	}
+	.TitleText{
+		display: block;
+		color: darkblue;
+		width: 20%;
+		font-size: 450%;
+		top: 0px;
+		background-color: #d6e3ff;
+		left: 0%;
+		border: solid;
+		padding-right: 5px;
+		padding-left: 5px;
+		border-width: 1px;
+		border-color: darkblue;
+		position: absolute;
+	}
+	.Solved{
+		font-size: 60px;
+		margin-left: 0px;
+		text-decoration: bold;
+		color: blue;
+		margin-top: -48%;
+		border: solid;
+		padding-right: 20px;
+		padding-left: 20px;
+		border-width: 5px;
+		border-color: blue;
+		position: absolute;
+		width: 20%;
+		left: auto;
+		right: 0px;
+	}
+	.speedSolveText{
+		color: darkblue;
+		font-size: 25px;
+		margin-top: -14%;
+		background-color: #d6e3ff;
+		left: 0%;
+		border: solid;
+		padding-right: 0px;
+		padding-left: 0px;
+		border-width: 1px;
+		border-color: darkblue;
+		position: absolute;
+		width: 20%;
+		height: auto;
+	}
+	.sizeGridText{
+		color: darkblue;
+		font-size: 25px;
+		margin-top: -6.5%;
+		background-color: #d6e3ff;
+		left: 0%;
+		border: solid;
+		padding-right: 0px;
+		padding-left: 0px;
+		border-width: 1px;
+		border-color: darkblue;
+		position: absolute;
+		width: 20%;
+		text-align: center;
+		height: auto;
+	}
+	.Moves{
+		color: darkblue;
+		font-size: 25px;
+		margin-top: -12.5%;
+		right: 0%;
+		border: solid;
+		padding-right: 5px;
+		padding-left: 5px;
+		border-width: 1px;
+		border-color: darkblue;
+		position: absolute;
+	}
+	.SolidMoves{
+		color: darkblue;
+		font-size: 25px;
+		margin-top: -12.5%;
+		right: 4%;
+		position: absolute;
+	}
+	.button6{
+		background-color: #d6e3ff;
+		margin-top: -23%;
+		width: 20%;
+		left: 0%;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 25px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button6:hover {
+		color: red;
+		background-color: white;
+	}
+	.button5{
+		background-color: #d6e3ff;
+		margin-top: -30%;
+		width: 20%;
+		left: 0%;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 25px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button5:hover {
+		color: red;
+		background-color: white;
+	}
+	.button4{
+		background-color: #d6e3ff;
+		bottom: auto;
+		margin-top: -35%;
+		margin-left: 0px;
+		width: 15%;
+		height: 10%;
+		right: 5%;
+		left: auto;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 25px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button4:hover {
+		color: red;
+		background-color: white;
+	}
+	.button3{
+		background-color: #d6e3ff;
+		bottom: auto;
+		margin-top: -22.5%;
+		margin-left: 0px;
+		width: 15%;
+		height: 10%;
+		right:  5%;
+		left: auto;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 25px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button3:hover {
+		color: red;
+		background-color: white;
+	}
+	.slider2{
+		position: absolute;
+		margin-left: 0px;
+		width: 250px !important;
+		right: auto;
+		left: 0px;
+		margin-top: -4%;
+	}
+	.slider{
+		position: absolute;
+
+		width: 250px !important;
+		right: auto;
+		left: 0px;
+		margin-top: -11.5%;
+		margin-left: 0px;
+	}
+	.button2{
+		background-color: #d6e3ff;
+		bottom: auto;
+		margin-top: -28.75%;
+		margin-left: 0%;
+		width: 10%;
+		height: 10%;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 25px;
+		color: darkblue;
+		position: absolute;
+		left: auto;
+		right: 15% !important;
+	}
+	.button2:hover {
+		color: red;
+		background-color: white;
+	}
+	.button1{
+		background-color: #d6e3ff;
+		bottom: auto;
+		margin-top: -28.75%;
+		left: auto;
+		width: 10%;
+		height: 10%;
+		right: 0%;
+		border-width: 4px;
+		border-color: darkblue;
+		font-size: 25px;
+		color: darkblue;
+		position: absolute;
+	}
+	.button1:hover {
+		color: red;
+		background-color: white;
+	}
+	td {
+		text-align: center;
+		border-width: 10px;
+		Border-style: solid;
+		vertical-align: middle;
+	}
+	#t123{
+		background-color: darkblue;
+	}
+	table {
+		background-color : #777777;  
+		color:blue;
+    		border-color: blue;
+    		border-style: solid;
+    		text-align: center;
+    		margin: 0 auto;
+	}
+	.number-item3{
+ 		font-size: 70px;
+		width: 50% !important;
+		height: 1300px !important;
+		text-align: center;
+   		border-style: solid;
+   		background-color: #d6e3ff;
+   		border-width: 10px;
+   		margin-top: 0px;
+	}
+	.number-item4{
+		font-size: 62px;
+		width: 50% !important;
+		height: 1300px !important;
+
+	   	text-align: center;
+	   	border-style: solid;
+	   	background-color: #d6e3ff;
+	   	border-width: 10px;
+	   	margin-top: 0px;
+	}
+	.number-item5{
+	   	font-size: 54px;
+		width: 50% !important;
+		height: 1300px !important;
+
+	   	text-align: center;
+	   	border-style: solid;
+	   	background-color: #d6e3ff;
+	   	border-width: 10px;
+	   	margin-top: 0px;
+	}
+	.number-item6{
+   		font-size: 46px;
+   		
+		width: 50% !important;
+		height: 1300px !important;
+		text-align: center;
+   		border-style: solid;
+   		background-color: #d6e3ff;
+   		border-width: 10px;
+   		margin-top: 0px;
+	}
+	.number-item7{
+   		font-size: 38px;
+		
+		width: 50% !important;
+   		height: 1300px !important;
+		text-align: center;
+   		border-style: solid;
+   		background-color: #d6e3ff;
+   		border-width: 10px;
+   		margin-top: 0px;
+	}
+	.number-item8{
+   		font-size: 30px;
+	
+		width: 50% !important;
+   		height: 1300px !important;
+		text-align: center;
+   		border-style: solid;
+   		background-color: #d6e3ff;
+   		border-width: 10px;
+   		margin-top: 0px;
+	}
+	.number-item9{
+   		font-size: 22px;
+
+		width: 50% !important;
+   		height: 1300px !important;	
+		text-align: center;
+   		border-style: solid;
+   		background-color: #d6e3ff;
+   		border-width: 10px;
+   		margin-top: 0px;
+	}
+	.number-item10{
+   		font-size: 14px;
+
+		width: 50% !important;
+   		height: 1300px !important;	
+		text-align: center;
+   		border-style: solid;
+   		background-color: #d6e3ff;
+   		border-width: 10px;
+   		margin-top: 0px;
+	}
+}
 
