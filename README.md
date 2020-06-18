@@ -4,6 +4,8 @@ Date: April 2020
 https://github.com/gcobb1/PowerPuzzle
 This Code is Licensed under GNU-LGPL-3.0
 
+Deployed Application: https://puzzleslider.com
+
 Concept:
 A Puzzling Algorithm Visualizer! 
 This Web Application is written entirely in C++, making it fast and efficient.  
@@ -15,5 +17,9 @@ Features Include: An automated Solving Visualizer in which you can view the comp
                   A slide puzzle game to test your skills
                   A randomly generated Mixer algorithm
                   Hours of fun!
+
+
+Dependencies:
+Wt Webtoolkit
                   
 Please Enjoy
