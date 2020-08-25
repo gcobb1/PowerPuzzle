@@ -59,9 +59,6 @@ public:
 			startRowPuz.clear();
 		}
 	}	
-	~Puzzle(){
-		delete this;
-	}
 	
 	std::vector<std::vector<int> > NEWGRID = {{1, 2, 3}, {4, 5, 6}, {7, 8, 0}};	//a solved grid
 	void NGFresh();						//resets current grid to fresh grids
